@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+.sidebar {
+  font-family: 'PT Sans', sans-serif;
+  display: inline-block;
+  position: absolute;
+  top: 100px;
+  width: 300px;
+  height: 600px;
+  overflow: auto;
+  border: 1px solid #fff;
+}
+
+.content {
+  position: relative;
+  border: 1px solid #fff;
+  margin-top: 80px;
+  margin-left: 320px;
+}
+
+.test {
+  margin: 0 auto;
+}

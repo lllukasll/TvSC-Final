@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="poster">
+    <img src={{img}} />
+  </div>
+  <div class="details">
+    <h2>{{name}}<br><span>Produced by {{station}}</span></h2>
+    <div class="rating">
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star" aria-hidden="true"></i>
+      <i class="fa fa-star-o" aria-hidden="true"></i>
+      <span>4/5</span>
+    </div>
+    <div class="tags">
+      <span *ngFor='let tag of tags' class={{tag.type}}>{{tag.name}}</span>
+    </div>
+    <div class="info">
+      <p>{{description}}</p>
+    </div>
+    <div class="star">
+      <h4>Cast</h4>
+      <ul>
+        <li *ngFor='let castMember of cast'><img src={{castMember.img}}></li>
+      </ul>
+    </div>
+  </div>
+</div>

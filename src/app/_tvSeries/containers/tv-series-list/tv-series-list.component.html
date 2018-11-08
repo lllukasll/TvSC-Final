@@ -1,0 +1,32 @@
+<div class="page">
+    <div class="sidebar">
+        <h4>Typ</h4>
+        <ul>
+          <li><input type="checkbox" name="action"><label for="action">Akcja</label></li>
+          <li><input type="checkbox" name="action"><label for="action">Thriller</label></li>
+          <li><input type="checkbox" name="action"><label for="action">Fantasy</label></li>
+          <li><input type="checkbox" name="action"><label for="action">Komedia</label></li>
+          <li><input type="checkbox" name="action"><label for="action">Animacja</label></li>
+        </ul>
+        <h4>Status</h4>
+        <ul>
+          <li>W trakcie produkcji</li>
+          <li>Zakończony</li>
+        </ul>
+        <button>Filtruj</button>
+      </div>
+
+      <div class="content">
+          <app-tv-series-list-card
+          *ngFor='let tvShow of tvShowsArray'
+          [name]='tvShow.name'
+          [station]='tvShow.station'
+          [description]='tvShow.description'
+          [cast]='tvShow.cast'
+          [tags]='tvShow.tags'
+          [img]='tvShow.img'>
+        </app-tv-series-list-card>
+      </div>
+
+
+</div>
