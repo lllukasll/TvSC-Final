@@ -12,12 +12,47 @@
 }
 
 .content {
-  position: relative;
-  border: 1px solid #fff;
-  margin-top: 80px;
-  margin-left: 320px;
+  margin-left: 345px;
+  text-align: center;
 }
 
 .test {
   margin: 0 auto;
+}
+
+.tv-shows {
+  border-radius: 5px;
+
+  .pagination-container {
+    margin-top: 7px;
+    min-height: 655px;
+    display: block;
+    width: 100%;
+
+    .pagination {
+      float: right;
+      margin-right: 20px;
+
+      .number {
+        background-color: rgba(65,131,215, 0.3);
+        color: rgba(255,255,255,0.6);
+        padding: 5px 5px;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        margin: 3px;
+        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: rgba(65,131,215, 0.5);
+          color: rgba(255,255,255,0.8);
+        }
+      }
+    }
+    
+  }
 }

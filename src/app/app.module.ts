@@ -18,12 +18,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './_admin/admin.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     WelcomeComponent,
+    NavbarComponent,
   ],
   imports: [
     HttpClientModule,

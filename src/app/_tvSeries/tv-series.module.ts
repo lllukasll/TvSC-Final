@@ -8,6 +8,8 @@ import { TvSeriesEffect } from './effects/tvSeries.effects';
 import { TvSeriesListComponent } from './containers/tv-series-list/tv-series-list.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TvSeriesListCardComponent } from './components/tv-series-list-card/tv-series-list-card.component';
+import { TvSeriesListSidebarComponent } from './components/tv-series-list-sidebar/tv-series-list-sidebar.component';
+import { TvSeriesListSortBarComponent } from './components/tv-series-list-sort-bar/tv-series-list-sort-bar.component';
 
 const tvSeriesRoutes: Routes = [
   { path: 'tvSeries', component: TvSeriesListComponent}
@@ -20,6 +22,6 @@ const tvSeriesRoutes: Routes = [
     EffectsModule.forFeature([TvSeriesEffect]),
     RouterModule.forChild(tvSeriesRoutes)
   ],
-  declarations: [TvSeriesListComponent, TvSeriesListCardComponent]
+  declarations: [TvSeriesListComponent, TvSeriesListCardComponent, TvSeriesListSidebarComponent, TvSeriesListSortBarComponent]
 })
 export class TvSeriesModule { }
