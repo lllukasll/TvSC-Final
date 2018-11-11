@@ -1,9 +1,14 @@
 <div class="topnav" id="myTopnav">
-  <a href="#home" class="active">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <a [routerLink]="['/welcome']" routerLinkActive="router-link-active"  class="active">TvSC</a>
+  <a [routerLink]="['/calendar']" >Kalendarz</a>
+  <a [routerLink]="['/tvSeries']" >Lista seriali</a>
+
+  <div style="float: right">
+    <a href="#contact">Zaloguj się</a>
+    <a href="#about">Zarejestruj się</a>
+  </div>
+
+  <a class="icon">
     <i class="fa fa-bars"></i>
   </a>
 </div>

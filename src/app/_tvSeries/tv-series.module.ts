@@ -10,18 +10,28 @@ import { RouterModule, Routes } from '@angular/router';
 import { TvSeriesListCardComponent } from './components/tv-series-list-card/tv-series-list-card.component';
 import { TvSeriesListSidebarComponent } from './components/tv-series-list-sidebar/tv-series-list-sidebar.component';
 import { TvSeriesListSortBarComponent } from './components/tv-series-list-sort-bar/tv-series-list-sort-bar.component';
+import { TvSeriesCalendarComponent } from './containers/tv-series-calendar/tv-series-calendar.component';
+import { SharedModule } from '../_shared/shared.module';
 
 const tvSeriesRoutes: Routes = [
-  { path: 'tvSeries', component: TvSeriesListComponent}
+  { path: 'tvSeries', component: TvSeriesListComponent},
+  { path: 'calendar', component: TvSeriesCalendarComponent}
 ];
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     StoreModule.forFeature('tvSeries', fromTvSeries.reducer),
     EffectsModule.forFeature([TvSeriesEffect]),
     RouterModule.forChild(tvSeriesRoutes)
   ],
-  declarations: [TvSeriesListComponent, TvSeriesListCardComponent, TvSeriesListSidebarComponent, TvSeriesListSortBarComponent]
+  declarations: [
+    TvSeriesListComponent,
+    TvSeriesListCardComponent,
+    TvSeriesListSidebarComponent,
+    TvSeriesListSortBarComponent,
+    TvSeriesCalendarComponent
+  ]
 })
 export class TvSeriesModule { }

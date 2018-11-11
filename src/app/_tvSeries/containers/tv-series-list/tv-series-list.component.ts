@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import * as tvShowsActions from '../../actions/tvSeries.actions';
 import * as fromTvSeries from '../../reducers/tvSeries.reducer';
+import { isSpinnerShowing } from '../../../_shared/reducers/index';
 import { State } from '../../../reducers';
 import { TvShow } from '../../models/tvShow';
 
@@ -13,8 +14,11 @@ import { TvShow } from '../../models/tvShow';
 })
 export class TvSeriesListComponent implements OnInit {
 
+  url: 'http://localhost:50388';
   tvShows$: any[];
+  loading: Observable<boolean>;
 
+  /*
   tvShowsArray = [
     {
       name : 'Sherlock',
@@ -172,15 +176,16 @@ export class TvSeriesListComponent implements OnInit {
         }
       ]
     }
-  ];
+  ];*/
 
   constructor(private store: Store<fromTvSeries.State>) {
   }
 
   ngOnInit() {
+    this.loading = this.store.pipe(select(isSpinnerShowing));
     this.store.dispatch(new tvShowsActions.LoadTvShowsAction());
     this.store.pipe(select(fromTvSeries.getTvSeries)).subscribe(
-      tvShows => { this.tvShows$ = tvShows; }
+      tvShows => { this.tvShows$ = tvShows; console.log(tvShows); }
     );
   }
 }

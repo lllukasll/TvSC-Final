@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TvSeriesListSidebarComponent implements OnInit {
 
+  sidebarOpen = true;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toogleSidebar(): void {
+    this.sidebarOpen = !this.sidebarOpen;
   }
 
 }

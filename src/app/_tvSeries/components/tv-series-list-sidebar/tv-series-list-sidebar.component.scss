@@ -1,3 +1,8 @@
+.closed {
+  height: 40px;
+  overflow: hidden;
+}
+
 .sidebar {
     padding: 0 30px;
     font-family: 'PT Sans', sans-serif;
@@ -10,6 +15,17 @@
     padding: 10px;
     border-radius: 10px;
     background-color: rgba(255,255,255,0.05);
+
+    .toogle-sidebar-btn {
+      float: right;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.5s;
+
+      &:hover {
+        color: rgba(65,131,215, 0.8);
+      }
+    }
 
     .type {
         display: inline-block;

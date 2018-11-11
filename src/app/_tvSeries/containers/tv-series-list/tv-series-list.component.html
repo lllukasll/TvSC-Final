@@ -6,14 +6,15 @@
       <app-tv-series-list-sort-bar></app-tv-series-list-sort-bar>
 
       <div class="tv-shows">
+        <app-spinner *ngIf='loading | async'></app-spinner>
         <app-tv-series-list-card
-            *ngFor='let tvShow of tvShowsArray'
+            *ngFor='let tvShow of tvShows$'
             [name]='tvShow.name'
-            [station]='tvShow.station'
+            [station]='tvShow.network'
             [description]='tvShow.description'
-            [cast]='tvShow.cast'
-            [tags]='tvShow.tags'
-            [img]='tvShow.img'>
+            [cast]='tvShow.actors'
+            [tags]='tvShow.categories'
+            [img]='tvShow.photoName'>
         </app-tv-series-list-card>
 
         <div class="pagination-container">

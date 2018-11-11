@@ -14,6 +14,7 @@
 .content {
   margin-left: 345px;
   text-align: center;
+  width: 100%;
 }
 
 .test {
@@ -22,6 +23,7 @@
 
 .tv-shows {
   border-radius: 5px;
+
 
   .pagination-container {
     margin-top: 7px;
@@ -46,13 +48,13 @@
         align-items: center;
         transition: 0.5s;
         cursor: pointer;
-  
+
         &:hover {
           background-color: rgba(65,131,215, 0.5);
           color: rgba(255,255,255,0.8);
         }
       }
     }
-    
+
   }
 }

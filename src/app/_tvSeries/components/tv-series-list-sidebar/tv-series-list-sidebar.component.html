@@ -1,7 +1,14 @@
-<div class="sidebar" style="margin-top: 20px">
+<div class="sidebar" [ngClass]="{closed: !sidebarOpen}" style="margin-top: 20px">
 
-  <div style="font-size: 1rem; font-weight: 500">Typ</div>
-  <hr> 
+  <div style="font-size: 1rem; font-weight: 500; height: 40px;">
+    Filtry
+    <span class="toogle-sidebar-btn" (click)='toogleSidebar()'>
+      <i *ngIf='sidebarOpen' class="fa fa-angle-up"></i><i *ngIf='!sidebarOpen' class="fa fa-angle-down"></i>
+    </span>
+  </div>
+  <div style="font-size: 1rem; font-weight: 500">Typ
+  </div>
+  <hr>
   <div class="row">
     <div class="col-6">
       <div class="type">Akcja</div>
@@ -25,7 +32,7 @@
 
   <br />
   <div style="font-size: 1rem; font-weight: 500">Status</div>
-  <hr> 
+  <hr>
   <div style="text-align: center">
     <div class="station">W trakcie produkcji</div>
     <div class="station">Zakończony</div>
@@ -33,7 +40,7 @@
 
   <br />
   <div style="font-size: 1rem; font-weight: 500">Stacja</div>
-  <hr> 
+  <hr>
   <div style="text-align: center">
     <div class="station">AMC</div>
     <div class="station">Netflix</div>
@@ -44,5 +51,5 @@
   <div style="text-align: center">
       <button class="filter-btn">Filtruj</button>
   </div>
-  
+
 </div>
