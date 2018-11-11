@@ -6,16 +6,20 @@
       <app-tv-series-list-sort-bar></app-tv-series-list-sort-bar>
 
       <div class="tv-shows">
-        <app-spinner *ngIf='loading | async'></app-spinner>
-        <app-tv-series-list-card
-            *ngFor='let tvShow of tvShows$'
-            [name]='tvShow.name'
-            [station]='tvShow.network'
-            [description]='tvShow.description'
-            [cast]='tvShow.actors'
-            [tags]='tvShow.categories'
-            [img]='tvShow.photoName'>
-        </app-tv-series-list-card>
+        <div *ngIf='loading | async' class="spinner">
+         <app-spinner ></app-spinner>
+        </div>
+        <div [ngClass]="{blur: loading | async}">
+          <app-tv-series-list-card
+              *ngFor='let tvShow of tvShows$'
+              [name]='tvShow.name'
+              [station]='tvShow.network'
+              [description]='tvShow.description'
+              [cast]='tvShow.actors'
+              [tags]='tvShow.categories'
+              [img]='tvShow.photoName'>
+          </app-tv-series-list-card>
+        </div>
 
         <div class="pagination-container">
           <div class="pagination">
