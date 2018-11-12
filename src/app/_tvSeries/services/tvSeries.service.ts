@@ -10,8 +10,11 @@ export class TvSeriesService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<any> {
-    const url = `${this.BASE_URL}/tvShow`;
-    return this.http.get(url);
+  getAll(parameters): Observable<any> {
+    const url = `${this.BASE_URL}/tvShow/getByParameters`;
+
+    console.log(parameters);
+
+    return this.http.post(url, parameters);
   }
 }

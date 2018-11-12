@@ -13,7 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
-import { reducers } from './reducers';
+import * as fromRoot from './reducers/index';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './_admin/admin.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -36,7 +36,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SharedModule,
     UserModule,
     AppRoutingModule,
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(fromRoot.reducers),
     StoreDevtoolsModule.instrument({
       name: 'NgRx Book Store App',
       logOnly: environment.production,

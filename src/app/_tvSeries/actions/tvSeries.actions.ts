@@ -8,7 +8,7 @@ export enum TvSeriesActionTypes {
 
 export class LoadTvShowsAction implements Action {
   readonly type = TvSeriesActionTypes.GET_ALL;
-  constructor() { }
+  constructor(public payload: any) { }
 }
 
 export class LoadTvShowsSuccessAction implements Action {

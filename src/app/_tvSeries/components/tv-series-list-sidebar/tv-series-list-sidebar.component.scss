@@ -3,6 +3,11 @@
   overflow: hidden;
 }
 
+.clicked {
+  background-color: rgba(65,131,215, 0.3) !important;
+  color: rgba(255,255,255,0.9) !important;
+}
+
 .sidebar {
     padding: 0 30px;
     font-family: 'PT Sans', sans-serif;

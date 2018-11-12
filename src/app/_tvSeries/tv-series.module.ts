@@ -12,6 +12,7 @@ import { TvSeriesListSidebarComponent } from './components/tv-series-list-sideba
 import { TvSeriesListSortBarComponent } from './components/tv-series-list-sort-bar/tv-series-list-sort-bar.component';
 import { TvSeriesCalendarComponent } from './containers/tv-series-calendar/tv-series-calendar.component';
 import { SharedModule } from '../_shared/shared.module';
+import { TvSeriesListPaginationComponent } from './components/tv-series-list-pagination/tv-series-list-pagination.component';
 
 const tvSeriesRoutes: Routes = [
   { path: 'tvSeries', component: TvSeriesListComponent},
@@ -31,7 +32,8 @@ const tvSeriesRoutes: Routes = [
     TvSeriesListCardComponent,
     TvSeriesListSidebarComponent,
     TvSeriesListSortBarComponent,
-    TvSeriesCalendarComponent
+    TvSeriesCalendarComponent,
+    TvSeriesListPaginationComponent
   ]
 })
 export class TvSeriesModule { }

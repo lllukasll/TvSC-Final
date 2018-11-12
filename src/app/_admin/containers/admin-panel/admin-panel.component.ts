@@ -12,15 +12,9 @@ import * as tvShowsActions from '../../../_tvSeries/actions/tvSeries.actions';
 })
 export class AdminPanelComponent implements OnInit {
 
-  tvShows$: any[];
-
-  constructor(private store: Store<fromTvSeries.State>) { }
+  constructor() { }
 
   ngOnInit() {
-    this.store.dispatch(new tvShowsActions.LoadTvShowsAction());
-    this.store.pipe(select(fromTvSeries.getTvSeries)).subscribe(
-      tvShows => { this.tvShows$ = tvShows; }
-    );
   }
 
 }

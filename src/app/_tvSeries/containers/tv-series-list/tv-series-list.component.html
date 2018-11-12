@@ -1,6 +1,8 @@
 <div class="container-fluid">
   <div class="row" style="margin-top: 20px;">
-    <app-tv-series-list-sidebar></app-tv-series-list-sidebar>
+    <app-tv-series-list-sidebar
+      (submited)='filterSubmitted($event)'
+    ></app-tv-series-list-sidebar>
     <div class="content">
 
       <app-tv-series-list-sort-bar></app-tv-series-list-sort-bar>
@@ -11,7 +13,7 @@
         </div>
         <div [ngClass]="{blur: loading | async}">
           <app-tv-series-list-card
-              *ngFor='let tvShow of tvShows$'
+              *ngFor='let tvShow of tvShows$.tvShowsList'
               [name]='tvShow.name'
               [station]='tvShow.network'
               [description]='tvShow.description'
@@ -21,20 +23,13 @@
           </app-tv-series-list-card>
         </div>
 
-        <div class="pagination-container">
-          <div class="pagination">
-            <div class="number"><i class="fa fa-angle-double-left"></i></div>
-            <div class="number"><i class="fa fa-angle-left"></i></div>
-            <div class="number">1</div>
-            <div class="number">2</div>
-            <div class="number">...</div>
-            <div class="number">40</div>
-            <div class="number"><i class="fa fa-angle-right"></i></div>
-            <div class="number"><i class="fa fa-angle-double-right"></i></div>
-          </div>
-        </div>
+        <app-tv-series-list-pagination
+          [totalPageNumber]='tvShows$.totalPageNumber'
+          [activePageNumber]='tvShows$.activePageNumber'
+          (pageChange)='pageChanged($event)'
+        ></app-tv-series-list-pagination>
+
       </div>
     </div>
-
   </div>
 </div>

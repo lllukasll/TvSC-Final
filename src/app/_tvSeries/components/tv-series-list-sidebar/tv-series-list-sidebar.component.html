@@ -11,22 +11,22 @@
   <hr>
   <div class="row">
     <div class="col-6">
-      <div class="type">Akcja</div>
-      <div class="type">Thriller</div>
-      <div class="type">Fantasy</div>
-      <div class="type">Komedia</div>
-      <div class="type">Animacja</div>
-      <div class="type">Sci-fi</div>
-      <div class="type">Western</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Akcja')}" (click)='onCategoryClicked($event)'>Akcja</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Thriller')}" (click)='onCategoryClicked($event)'>Thriller</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Fantasy')}" (click)='onCategoryClicked($event)'>Fantasy</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Komedia')}" (click)='onCategoryClicked($event)'>Komedia</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Animacja')}" (click)='onCategoryClicked($event)'>Animacja</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Sci-fi')}" (click)='onCategoryClicked($event)'>Sci-fi</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Western')}" (click)='onCategoryClicked($event)'>Western</div>
     </div>
     <div class="col-6">
-      <div class="type">Familijny</div>
-      <div class="type">Przygodowy</div>
-      <div class="type">Sportowy</div>
-      <div class="type">Muzyczny</div>
-      <div class="type">Edukacyjny</div>
-      <div class="type">Horror</div>
-      <div class="type">Historyczny</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Familijny')}" (click)='onCategoryClicked($event)'>Familijny</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Przygodowy')}" (click)='onCategoryClicked($event)'>Przygodowy</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Sportowy')}" (click)='onCategoryClicked($event)'>Sportowy</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Muzyczny')}" (click)='onCategoryClicked($event)'>Muzyczny</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Edukacyjny')}" (click)='onCategoryClicked($event)'>Edukacyjny</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Horror')}" (click)='onCategoryClicked($event)'>Horror</div>
+      <div class="type" [ngClass]="{clicked: checkIfOnCategoriesList('Historyczny')}" (click)='onCategoryClicked($event)'>Historyczny</div>
     </div>
   </div>
 
@@ -34,22 +34,22 @@
   <div style="font-size: 1rem; font-weight: 500">Status</div>
   <hr>
   <div style="text-align: center">
-    <div class="station">W trakcie produkcji</div>
-    <div class="station">Zakończony</div>
+    <div class="station" [ngClass]="{clicked: checkifStatusClicked(1)}" (click)='onStatusClicked(1)'>W trakcie produkcji</div>
+    <div class="station" [ngClass]="{clicked: checkifStatusClicked(2)}" (click)='onStatusClicked(2)'>Zakończony</div>
   </div>
 
   <br />
   <div style="font-size: 1rem; font-weight: 500">Stacja</div>
   <hr>
   <div style="text-align: center">
-    <div class="station">AMC</div>
-    <div class="station">Netflix</div>
-    <div class="station">HBO</div>
-    <div class="station">Inna</div>
+    <div class="station" value="AMC" [ngClass]="{clicked: checkIfOnNetworksList('AMC')}" (click)='onNetworkClicked($event)'>AMC</div>
+    <div class="station" value="Netflix" [ngClass]="{clicked: checkIfOnNetworksList('Netflix')}" (click)='onNetworkClicked($event)'>Netflix</div>
+    <div class="station" value="HBO" [ngClass]="{clicked: checkIfOnNetworksList('HBO')}" (click)='onNetworkClicked($event)'>HBO</div>
+    <div class="station" value="Inna" [ngClass]="{clicked: checkIfOnNetworksList('Inna')}" (click)='onNetworkClicked($event)'>Inna</div>
   </div>
 
   <div style="text-align: center">
-      <button class="filter-btn">Filtruj</button>
+      <button class="filter-btn" (click)='onSubmit()'>Filtruj</button>
   </div>
 
 </div>

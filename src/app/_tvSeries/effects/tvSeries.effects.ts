@@ -38,7 +38,8 @@ export class TvSeriesEffect  {
   @Effect()
   GetAll: Observable<Action> = this.actions.pipe(
     ofType(TvSeriesActionTypes.GET_ALL),
-    switchMap(() => this.tvSeriesService.getAll()),
+    map((action: LoadTvShowsAction) => action.payload),
+    switchMap((payload) => this.tvSeriesService.getAll(payload)),
     map(tvShows => (new LoadTvShowsSuccessAction(tvShows.dtoObject))
   ));
 }
