@@ -1,4 +1,5 @@
 export interface TvShow {
+  id: number;
   name: string;
   description: string;
   network: string;

@@ -9,11 +9,13 @@ export interface State extends fromRoot.State {
 
 export interface TvSeriesState {
   tvShows: TvShow[];
+  currentTvShow: TvShow;
   isLoading: boolean;
 }
 
 const initialState: TvSeriesState = {
   tvShows: [],
+  currentTvShow: null,
   isLoading: false
 };
 
@@ -24,12 +26,23 @@ export const getTvSeries = createSelector(
   state => state.tvShows
 );
 
+export const getCurrentTvSeries = createSelector(
+  getTvSeriesState,
+  state => state.currentTvShow
+);
+
 export function reducer(state = initialState, action: TvShowAction.All): TvSeriesState {
   switch (action.type) {
     case TvShowAction.TvSeriesActionTypes.GET_ALL_SUCCESS: {
       return {
         ...state,
         tvShows: action.payload
+      };
+    }
+    case TvShowAction.TvSeriesActionTypes.GET_ONE_SUCCESS: {
+      return {
+        ...state,
+        currentTvShow: action.payload
       };
     }
     default: {

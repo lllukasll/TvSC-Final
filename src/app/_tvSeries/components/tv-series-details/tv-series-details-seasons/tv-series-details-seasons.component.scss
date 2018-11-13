@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+.seasons {
+  position: relative;
+  width: 100%;
+  font-family: 'PT Sans', sans-serif;
+
+  .season {
+    margin: 0px 1%;
+    width: 98%;
+    height: 40px;
+    background-color: rgba(167, 167, 167, 0.274);
+    display: inline-flex;
+    align-items: center;
+
+    .name {
+      display: inline-flex;
+      align-items: center;
+      font-size: 1rem;
+      padding-left: 20px;
+      float: left;
+      height: 100%;
+      width: 80%;
+    }
+
+    .switch-container {
+      float: right;
+      height: 100%;
+      width: 20%;
+
+      .switch {
+        width: 70px;
+        height: 26px;
+        margin: 7px auto;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 5px;
+        transition: 0.5s;
+        opacity: 0.5;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        .on {
+          float: left;
+          width: 50%;
+          height: 100%;
+          background-color: rgba(0, 128, 0, 0.575);
+        }
+
+        .off {
+          float: right;
+          width: 50%;
+          height: 100%;
+          background-color: rgba(255, 0, 0, 0.507);
+
+
+        }
+      }
+    }
+  }
+
+  .episode {
+    margin: 0px 1%;
+    width: 98%;
+    height: 30px;
+    background-color: rgba(110, 109, 109, 0.274);
+    display: inline-flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+
+    .name {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.9rem;
+      padding-left: 30px;
+      float: left;
+      height: 100%;
+      width: 80%;
+    }
+
+    .switch-container {
+      float: right;
+      height: 100%;
+      width: 20%;
+
+      .switch {
+        width: 50px;
+        height: 16px;
+        margin: 7px auto;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 5px;
+        transition: 0.5s;
+        opacity: 0.5;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        .on {
+          float: left;
+          width: 50%;
+          height: 100%;
+          background-color: rgba(0, 128, 0, 0.575);
+        }
+
+        .off {
+          float: right;
+          width: 50%;
+          height: 100%;
+          background-color: rgba(255, 0, 0, 0.507);
+
+
+        }
+      }
+    }
+  }
+}

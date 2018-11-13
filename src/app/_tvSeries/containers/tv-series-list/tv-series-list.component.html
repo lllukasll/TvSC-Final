@@ -14,6 +14,7 @@
         <div [ngClass]="{blur: loading | async}">
           <app-tv-series-list-card
               *ngFor='let tvShow of tvShows$.tvShowsList'
+              [id]='tvShow.id'
               [name]='tvShow.name'
               [station]='tvShow.network'
               [description]='tvShow.description'

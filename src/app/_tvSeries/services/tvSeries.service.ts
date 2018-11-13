@@ -13,8 +13,11 @@ export class TvSeriesService {
   getAll(parameters): Observable<any> {
     const url = `${this.BASE_URL}/tvShow/getByParameters`;
 
-    console.log(parameters);
-
     return this.http.post(url, parameters);
+  }
+
+  getOne(tvSeriesId): Observable<any> {
+    const url = `${this.BASE_URL}/tvShow/${tvSeriesId}`;
+    return this.http.get(url);
   }
 }

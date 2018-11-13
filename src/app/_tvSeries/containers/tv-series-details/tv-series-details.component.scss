@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+.bg {
+  min-height: 1000px;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+
+  .background-photo {
+    height: 1000px;
+    position: absolute;
+    top:0;
+    width: 100%;
+    opacity: 0.2;
+    z-index: 0;
+
+    -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  }
+
+  .content-container {
+    position: relative;
+    margin: 20px;
+    font-family: 'PT Sans', sans-serif;
+    width: 100%;
+
+    .seasons {
+      position: relative;
+      display: inline-block;
+      width: 60%;
+      z-index: 100;
+    }
+
+    .cast {
+      position: absolute;
+      top: 0;
+      padding-left: 20px;
+      display: inline-block;
+      width: 40%;
+    }
+  }
+}
+
+.details-container {
+  margin: 20px;
+  position: relative;
+  width: 100%;
+  font-family: 'PT Sans', sans-serif;
+
+  .banner {
+    display: inline-block;
+    font-family: 'PT Sans', sans-serif;
+    position: relative;
+    width: 300px;
+    height: 450px;
+    background: #000;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+
+    img {
+      width: 100%;
+      transition: 0.5s;
+    }
+  }
+
+  .details-informations {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    margin-left: 20px;
+
+    .details {
+      width: 80%;
+      padding-right: 10%;
+
+      .title {
+        font-size: 2rem;
+      }
+
+      .network {
+        color: #ff9800;
+        margin-left: 2px;
+      }
+
+      .rating-start {
+        position: relative;
+        padding: 5px 0;
+
+        .fa {
+          color: #f7f406;
+          margin-right: 2px;
+          font-size: 16px;
+        }
+
+        span {
+          color: #fff;
+          padding: 0 5px;
+        }
+      }
+
+      .tags {
+        position: relative;
+        margin-top: 5px;
+
+        span {
+          padding: 2px 5px;
+          margin-right: 5px;
+          color: #fff;
+          display: inline-block;
+          border-radius: 4px;
+        }
+
+        .drama{
+          background: #7206f7;
+        }
+
+        .romance {
+          background: #f70661;
+        }
+
+        .action{
+          background: #354940;
+        }
+
+        .thriller{
+          background: #C54246;
+        }
+      }
+
+      .description {
+        margin-top: 10px;
+        padding: 2px 5px;
+      }
+    }
+
+    .rating {
+      float: right;
+      width: 20%;
+    }
+  }
+}
+
+
+
+

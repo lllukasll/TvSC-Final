@@ -1,0 +1,55 @@
+.rating-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .rating {
+    position: relative;
+    width: 100%;
+    margin-left: 5px;
+
+    .rating-portion {
+      width: 100%;
+
+      .name {
+        display: inline-block;
+        width: 100px;
+      }
+
+      .content {
+        display: inline-block;
+      }
+
+      .fa {
+        color: #f7f406;
+        margin-right: 2px;
+        font-size: 1.5rem;
+      }
+
+      span {
+        color: #fff;
+        padding: 0 5px;
+      }
+    }
+
+  }
+
+  .submit-btn {
+    opacity: 0.5;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-top: 10px;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

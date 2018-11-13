@@ -6,16 +6,17 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./tv-series-list-card.component.scss']
 })
 export class TvSeriesListCardComponent implements OnInit {
+  @Input() id: number;
   @Input() name: string;
   @Input() description: string;
   @Input() tags: any[];
   @Input() station: string;
   @Input() cast: any[];
   @Input() img: string;
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-
   }
 
 }

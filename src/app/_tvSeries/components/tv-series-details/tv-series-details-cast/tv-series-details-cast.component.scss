@@ -1,0 +1,28 @@
+.actor-container {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 10%;
+  opacity: 0.8;
+  transition: 0.5s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .actor-picture {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+
+    img {
+      border: 2px solid #fff;
+      border-radius: 50%;
+      width: 100%;
+    }
+  }
+
+  .actor-name {
+    padding: 0px 20px;
+    display: inline-block;
+  }
+}
