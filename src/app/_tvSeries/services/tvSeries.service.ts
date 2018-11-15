@@ -20,4 +20,9 @@ export class TvSeriesService {
     const url = `${this.BASE_URL}/tvShow/${tvSeriesId}`;
     return this.http.get(url);
   }
+
+  getCurrentMonthEpisodes(monthNumber): Observable<any> {
+    const url = `${this.BASE_URL}/Calendar/month/${monthNumber}`;
+    return this.http.get(url);
+  }
 }

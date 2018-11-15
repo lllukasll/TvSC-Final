@@ -1,7 +1,7 @@
-<div class="seasons">
+<div class="seasons" *ngFor='let season of seasons'>
   <div class="season">
     <div class="name">
-      1. Sezon 1
+      {{season.seasonNumber}}. Sezon {{season.seasonNumber}}
     </div>
     <div class="switch-container">
       <div class="switch">
@@ -10,9 +10,9 @@
       </div>
     </div>
   </div>
-  <div class="episode">
+  <div class="episode" *ngFor='let episode of season.episodes'>
     <div class="name">
-        1. Pilot
+        {{episode.episodeNumber}}. {{episode.episodeName}}
       </div>
       <div class="switch-container">
         <div class="switch">
@@ -21,15 +21,4 @@
         </div>
       </div>
   </div>
-  <div class="episode">
-      <div class="name">
-          2. Cat's in the Bag...
-        </div>
-        <div class="switch-container">
-          <div class="switch">
-            <div class="on">
-            </div>
-          </div>
-        </div>
-    </div>
 </div>

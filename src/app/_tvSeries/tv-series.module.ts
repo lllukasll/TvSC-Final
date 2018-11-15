@@ -18,6 +18,9 @@ import { TvSeriesDetailsRatingComponent } from './components/tv-series-details/t
 // tslint:disable-next-line:max-line-length
 import { TvSeriesDetailsSeasonsComponent } from './components/tv-series-details/tv-series-details-seasons/tv-series-details-seasons.component';
 import { TvSeriesDetailsCastComponent } from './components/tv-series-details/tv-series-details-cast/tv-series-details-cast.component';
+import { MonthCalendarComponent } from './components/tv-series-calendar/month-calendar/month-calendar.component';
+import { WeekCalendarComponent } from './components/tv-series-calendar/week-calendar/week-calendar.component';
+import { DayCalendarComponent } from './components/tv-series-calendar/day-calendar/day-calendar.component';
 
 const tvSeriesRoutes: Routes = [
   { path: 'tvSeries', component: TvSeriesListComponent},
@@ -43,7 +46,10 @@ const tvSeriesRoutes: Routes = [
     TvSeriesDetailsComponent,
     TvSeriesDetailsRatingComponent,
     TvSeriesDetailsSeasonsComponent,
-    TvSeriesDetailsCastComponent
+    TvSeriesDetailsCastComponent,
+    MonthCalendarComponent,
+    WeekCalendarComponent,
+    DayCalendarComponent
   ]
 })
 export class TvSeriesModule { }

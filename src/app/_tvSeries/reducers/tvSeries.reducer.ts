@@ -2,6 +2,7 @@ import * as TvShowAction from '../actions/tvSeries.actions';
 import * as fromRoot from '../../reducers';
 import { TvShow } from '../models/tvShow';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { ICalendarEpisode } from '../models/calendarEpisode';
 
 export interface State extends fromRoot.State {
   tvSeries: TvSeriesState;
@@ -10,12 +11,14 @@ export interface State extends fromRoot.State {
 export interface TvSeriesState {
   tvShows: TvShow[];
   currentTvShow: TvShow;
+  currentMonthEpisodes: ICalendarEpisode[];
   isLoading: boolean;
 }
 
 const initialState: TvSeriesState = {
   tvShows: [],
   currentTvShow: null,
+  currentMonthEpisodes: [],
   isLoading: false
 };
 
@@ -31,6 +34,11 @@ export const getCurrentTvSeries = createSelector(
   state => state.currentTvShow
 );
 
+export const getCurrentMonthEpisodes = createSelector(
+  getTvSeriesState,
+  state => state.currentMonthEpisodes
+);
+
 export function reducer(state = initialState, action: TvShowAction.All): TvSeriesState {
   switch (action.type) {
     case TvShowAction.TvSeriesActionTypes.GET_ALL_SUCCESS: {
@@ -43,6 +51,12 @@ export function reducer(state = initialState, action: TvShowAction.All): TvSerie
       return {
         ...state,
         currentTvShow: action.payload
+      };
+    }
+    case TvShowAction.TvSeriesActionTypes.GET_CURRENT_MONTH_EPISODES_SUCCESS: {
+      return {
+        ...state,
+        currentMonthEpisodes: action.payload
       };
     }
     default: {

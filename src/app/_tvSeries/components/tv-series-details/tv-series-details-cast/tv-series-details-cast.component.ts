@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tv-series-details-cast',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TvSeriesDetailsCastComponent implements OnInit {
 
+  @Input() cast: any[];
   constructor() { }
 
   ngOnInit() {

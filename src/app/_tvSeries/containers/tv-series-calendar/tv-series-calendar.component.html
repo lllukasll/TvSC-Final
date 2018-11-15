@@ -1,7 +1,18 @@
-<div class="bar">
-  <span class="time-btn">Dzień</span>
-  <span class="time-btn">Tydzień</span>
-  <span class="time-btn">Miesiąc</span>
+<div class="bg">
+  <img class="background-photo" src="../../../../assets/img/banner.jpg" />
 
-  <span class="tooday">{{tooday}}</span>
+  <div class="content">
+      <div class="bar">
+        <span class="time-btn" (click)='changeCalendar("day")'>Dzień</span>
+        <span class="time-btn" (click)='changeCalendar("week")'>Tydzień</span>
+        <span class="time-btn" (click)='changeCalendar("month")'>Miesiąc</span>
+
+        <span class="tooday">{{tooday}}</span>
+      </div>
+
+      <app-month-calendar *ngIf='screenSize === "month"'></app-month-calendar>
+      <app-week-calendar *ngIf='screenSize === "week"'></app-week-calendar>
+      <app-day-calendar *ngIf='screenSize === "day"'></app-day-calendar>
+    </div>
 </div>
+

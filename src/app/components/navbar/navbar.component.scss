@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
 
 .topnav {
+    position: absolute;
+    top: 0;
+    width: 100%;
     overflow: hidden;
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.425);
     font-family: 'PT Sans', sans-serif;
+    z-index: 100;
 
     a {
       float: left;

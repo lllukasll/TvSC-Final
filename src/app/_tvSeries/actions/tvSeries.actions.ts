@@ -1,11 +1,14 @@
 import { Action } from '@ngrx/store';
 import { TvShow } from '../models/tvShow';
+import { ICalendarEpisode } from '../models/calendarEpisode';
 
 export enum TvSeriesActionTypes {
   GET_ALL = '[TvSeries] GET_ALL',
   GET_ALL_SUCCESS = '[TvSeries] GET_ALL_SUCCESS',
   GET_ONE = '[TvSeries] GET_ONE',
-  GET_ONE_SUCCESS = '[TvSeries] GET_ONE_SUCCESS';
+  GET_ONE_SUCCESS = '[TvSeries] GET_ONE_SUCCESS',
+  GET_CURRENT_MONTH_EPISODES = '[TvSeries] GET_CURRENT_MONTH_EPISODES',
+  GET_CURRENT_MONTH_EPISODES_SUCCESS = '[TvSeries] GET_CURRENT_MONTH_EPISODES_SUCCESS'
 }
 
 export class LoadTvShowsAction implements Action {
@@ -29,8 +32,20 @@ export class LoadTvShowSuccessAction implements Action {
   constructor(public payload: TvShow) { }
 }
 
+export class GetCurrentMonthEpisodesAction implements Action {
+  readonly type = TvSeriesActionTypes.GET_CURRENT_MONTH_EPISODES;
+  constructor(public payload: any) { }
+}
+
+export class GetCurrentMonthEpisodesSuccessAction implements Action {
+  readonly type = TvSeriesActionTypes.GET_CURRENT_MONTH_EPISODES_SUCCESS;
+  constructor(public payload: ICalendarEpisode[]) { }
+}
+
 export type All =
   | LoadTvShowsAction
   | LoadTvShowsSuccessAction
   | LoadTvShowAction
-  | LoadTvShowSuccessAction;
+  | LoadTvShowSuccessAction
+  | GetCurrentMonthEpisodesAction
+  | GetCurrentMonthEpisodesSuccessAction;

@@ -2,27 +2,38 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { TvSeriesService } from '../services/tvSeries.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TvSeriesActionTypes, LoadTvShowsAction, LoadTvShowsSuccessAction, LoadTvShowAction, LoadTvShowSuccessAction } from '../actions/tvSeries.actions';
+import {
+  TvSeriesActionTypes,
+  LoadTvShowsAction,
+  LoadTvShowsSuccessAction,
+  LoadTvShowAction,
+  LoadTvShowSuccessAction,
+  GetCurrentMonthEpisodesAction,
+  GetCurrentMonthEpisodesSuccessAction } from '../actions/tvSeries.actions';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { Action } from '@ngrx/store';
 import { HideSpinner, ShowSpinner } from '../../_shared/actions/spinner';
 
 type showSpinnerTypes =
   | LoadTvShowsAction
-  | LoadTvShowAction;
+  | LoadTvShowAction
+  | GetCurrentMonthEpisodesAction;
 
 const showSpinnerActions = [
   TvSeriesActionTypes.GET_ALL,
-  TvSeriesActionTypes.GET_ONE
+  TvSeriesActionTypes.GET_ONE,
+  TvSeriesActionTypes.GET_CURRENT_MONTH_EPISODES
 ];
 
 type hideSpinnerTypes =
   | LoadTvShowsSuccessAction
-  | LoadTvShowSuccessAction;
+  | LoadTvShowSuccessAction
+  | GetCurrentMonthEpisodesSuccessAction;
 
 const hideSpinnerActions = [
   TvSeriesActionTypes.GET_ALL_SUCCESS,
-  TvSeriesActionTypes.GET_ONE_SUCCESS
+  TvSeriesActionTypes.GET_ONE_SUCCESS,
+  TvSeriesActionTypes.GET_CURRENT_MONTH_EPISODES_SUCCESS
 ];
 
 @Injectable()
@@ -38,6 +49,14 @@ export class TvSeriesEffect  {
   hideSpinner: Observable<Action> = this.actions
     .ofType<hideSpinnerTypes>(...hideSpinnerActions)
     .pipe(map(() => new HideSpinner()));
+
+  @Effect()
+  GetCurrentMonthEpisodes: Observable<Action> = this.actions.pipe(
+    ofType(TvSeriesActionTypes.GET_CURRENT_MONTH_EPISODES),
+    map((action: GetCurrentMonthEpisodesAction) => action.payload),
+    switchMap((payload) => this.tvSeriesService.getCurrentMonthEpisodes(payload)),
+    map(episodes => (new GetCurrentMonthEpisodesSuccessAction(episodes.dtoObject)))
+  );
 
   @Effect()
   GetAll: Observable<Action> = this.actions.pipe(

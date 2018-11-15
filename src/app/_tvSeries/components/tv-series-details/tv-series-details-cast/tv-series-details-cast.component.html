@@ -1,8 +1,8 @@
-<div class="actor-container">
+<div class="actor-container" *ngFor='let actor of cast'>
   <div class="actor-picture">
-    <img src="../../../../../assets/img/breakingBad/cast1.jpg" />
+    <img src="http://localhost:50388/Actor/photo/{{actor.photo}}" />
   </div>
   <div class="actor-name">
-    Imie Nazwisko
+    {{actor.name}} {{actor.surname}}
   </div>
 </div>
