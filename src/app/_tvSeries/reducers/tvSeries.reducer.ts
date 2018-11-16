@@ -12,6 +12,7 @@ export interface TvSeriesState {
   tvShows: TvShow[];
   currentTvShow: TvShow;
   currentMonthEpisodes: ICalendarEpisode[];
+  currentWeekEpisodes: ICalendarEpisode[];
   isLoading: boolean;
 }
 
@@ -19,6 +20,7 @@ const initialState: TvSeriesState = {
   tvShows: [],
   currentTvShow: null,
   currentMonthEpisodes: [],
+  currentWeekEpisodes: [],
   isLoading: false
 };
 
@@ -39,6 +41,11 @@ export const getCurrentMonthEpisodes = createSelector(
   state => state.currentMonthEpisodes
 );
 
+export const getCurrentWeekEpisodes = createSelector(
+  getTvSeriesState,
+  state => state.currentWeekEpisodes
+);
+
 export function reducer(state = initialState, action: TvShowAction.All): TvSeriesState {
   switch (action.type) {
     case TvShowAction.TvSeriesActionTypes.GET_ALL_SUCCESS: {
@@ -57,6 +64,12 @@ export function reducer(state = initialState, action: TvShowAction.All): TvSerie
       return {
         ...state,
         currentMonthEpisodes: action.payload
+      };
+    }
+    case TvShowAction.TvSeriesActionTypes.GET_CURRENT_WEEK_EPISODES_SUCCESS: {
+      return {
+        ...state,
+        currentWeekEpisodes: action.payload
       };
     }
     default: {

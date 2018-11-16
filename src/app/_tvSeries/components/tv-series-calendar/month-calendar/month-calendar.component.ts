@@ -32,12 +32,21 @@ export class MonthCalendarComponent implements OnInit {
     return moment(date).isSame(this.currentDate, 'month');
   }
 
+  getCurrentMonthName(): string {
+    const months = ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec',
+             'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'];
+
+    return months[this.currentDate.month()];
+  }
+
   prevMonth(): void {
     this.currentDate = moment(this.currentDate).subtract(1, 'months');
+    this.store.dispatch(new tvShowsActions.GetCurrentMonthEpisodesAction(this.currentDate.month() + 1));
     this.generateCalendar();
   }
   nextMonth(): void {
     this.currentDate = moment(this.currentDate).add(1, 'months');
+    this.store.dispatch(new tvShowsActions.GetCurrentMonthEpisodesAction(this.currentDate.month() + 1));
     this.generateCalendar();
   }
 
@@ -50,10 +59,10 @@ export class MonthCalendarComponent implements OnInit {
     this.weeks = weeks;
   }
 
-  getDayEpisodes(dayNumber: number): ICalendarEpisode[] {
+  getDayEpisodes(dayNumber: number, month: number): ICalendarEpisode[] {
     return this.currentMonthEpisodes$.filter(x => {
       const date = moment(x.airingDate);
-      return date.date() === dayNumber && date.month() === this.currentDate.month();
+      return date.date() === dayNumber && month === date.month();
     });
   }
 

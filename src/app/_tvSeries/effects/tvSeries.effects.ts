@@ -9,7 +9,9 @@ import {
   LoadTvShowAction,
   LoadTvShowSuccessAction,
   GetCurrentMonthEpisodesAction,
-  GetCurrentMonthEpisodesSuccessAction } from '../actions/tvSeries.actions';
+  GetCurrentMonthEpisodesSuccessAction,
+  GetCurrentWeekEpisodesAction,
+  GetCurrentWeekEpisodesSuccessAction} from '../actions/tvSeries.actions';
 import { map, catchError, switchMap, tap } from 'rxjs/operators';
 import { Action } from '@ngrx/store';
 import { HideSpinner, ShowSpinner } from '../../_shared/actions/spinner';
@@ -17,23 +19,27 @@ import { HideSpinner, ShowSpinner } from '../../_shared/actions/spinner';
 type showSpinnerTypes =
   | LoadTvShowsAction
   | LoadTvShowAction
-  | GetCurrentMonthEpisodesAction;
+  | GetCurrentMonthEpisodesAction
+  | GetCurrentWeekEpisodesAction;
 
 const showSpinnerActions = [
   TvSeriesActionTypes.GET_ALL,
   TvSeriesActionTypes.GET_ONE,
-  TvSeriesActionTypes.GET_CURRENT_MONTH_EPISODES
+  TvSeriesActionTypes.GET_CURRENT_MONTH_EPISODES,
+  TvSeriesActionTypes.GET_CURRENT_WEEK_EPISODES
 ];
 
 type hideSpinnerTypes =
   | LoadTvShowsSuccessAction
   | LoadTvShowSuccessAction
-  | GetCurrentMonthEpisodesSuccessAction;
+  | GetCurrentMonthEpisodesSuccessAction
+  | GetCurrentWeekEpisodesSuccessAction;
 
 const hideSpinnerActions = [
   TvSeriesActionTypes.GET_ALL_SUCCESS,
   TvSeriesActionTypes.GET_ONE_SUCCESS,
-  TvSeriesActionTypes.GET_CURRENT_MONTH_EPISODES_SUCCESS
+  TvSeriesActionTypes.GET_CURRENT_MONTH_EPISODES_SUCCESS,
+  TvSeriesActionTypes.GET_CURRENT_WEEK_EPISODES_SUCCESS
 ];
 
 @Injectable()
@@ -56,6 +62,15 @@ export class TvSeriesEffect  {
     map((action: GetCurrentMonthEpisodesAction) => action.payload),
     switchMap((payload) => this.tvSeriesService.getCurrentMonthEpisodes(payload)),
     map(episodes => (new GetCurrentMonthEpisodesSuccessAction(episodes.dtoObject)))
+  );
+
+  @Effect()
+  GetCurrentWeekEpisodes: Observable<Action> = this.actions.pipe(
+    ofType(TvSeriesActionTypes.GET_CURRENT_WEEK_EPISODES),
+    map((action: GetCurrentWeekEpisodesAction) => action.payload),
+    tap(payload => console.log(payload)),
+    switchMap((payload) => this.tvSeriesService.getCurrentWeekEpisodes(payload)),
+    map(episodes => (new GetCurrentWeekEpisodesSuccessAction(episodes.dtoObject)))
   );
 
   @Effect()

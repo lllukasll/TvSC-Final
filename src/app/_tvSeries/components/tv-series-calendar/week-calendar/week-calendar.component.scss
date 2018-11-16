@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+.disabled {
+  opacity: 0.5;
+}
+
+.content {
+  margin-top: 20px;
+  width: 100%;
+  font-family: 'PT Sans', sans-serif;
+  position: relative;
+
+  .spinner {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    top:100px;
+    margin: 0 auto;
+  }
+
+  .week-bar-container {
+    width: 100%;
+    height: 30px;
+    background-color: rgba(255,255,255,0.15);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    vertical-align: top;
+    position: relative;
+
+    .previous-week {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      width: 33.3%;
+      text-align: left;
+      opacity: 0.7;
+      padding-left: 10px;
+      cursor: pointer;
+      transition: 0.5s;
+      &:hover {
+        opacity: 1;
+      }
+
+      i {
+        margin-right: 10px;
+      }
+    }
+
+    .current-week {
+      display: inline-block;
+      width: 33.3%;
+      text-align: center;
+      opacity: 0.7;
+      height: 100%;
+    }
+
+    .next-week {
+      display: inline-block;
+      width: 33.3%;
+      text-align: right;
+      opacity: 0.7;
+      height: 100%;
+      padding-right: 10px;
+      cursor: pointer;
+      transition: 0.5s;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      i {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .day-container {
+    height: 470px;
+    background-color: rgba(255,255,255,0.1);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    position: relative;
+
+    .day-name {
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+      letter-spacing: 1px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      writing-mode: tb-rl;
+      transform: rotate(-180deg);
+      width: 50px;
+      height: 100%;
+      text-align: center;
+      font-size: 2rem;
+      opacity: 0.6;
+      background-color: rgba(255, 255, 255, 0.192);
+    }
+
+    .previous-arrow {
+      position: absolute;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      left: 50px;
+      height: 100%;
+      width: 40px;
+      font-size: 3rem;
+      padding: 5px;
+      color: rgba(255, 255, 255, 0.562);
+      transition: 0.5s;
+      cursor: pointer;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.705);
+        background-color: rgba(255, 255, 255, 0.048);
+      }
+    }
+
+    .next-arrow {
+      position: absolute;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      right: 0px;
+      height: 100%;
+      width: 40px;
+      font-size: 3rem;
+      padding: 5px;
+      color: rgba(255, 255, 255, 0.562);
+      transition: 0.5s;
+      cursor: pointer;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.705);
+        background-color: rgba(255, 255, 255, 0.048);
+      }
+    }
+
+    .tv-shows-container {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 90px;
+      right: 40px;
+      top: 10px;
+      height: 450px;
+
+      .tv-shows-holder {
+        position: relative;
+        height: 450px;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        text-align: center;
+      }
+    }
+  }
+}

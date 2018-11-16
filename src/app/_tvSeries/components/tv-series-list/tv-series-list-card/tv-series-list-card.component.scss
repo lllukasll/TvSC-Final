@@ -96,6 +96,13 @@
     position: relative;
     margin-top: 5px;
 
+    .episodeName {
+      letter-spacing: 1px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 0;
+    }
+
     span {
       padding: 2px 5px;
       margin-right: 5px;

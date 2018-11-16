@@ -22,9 +22,9 @@ export class TvSeriesCalendarComponent implements OnInit {
 
   @HostListener('window:resize', ['$event']) onResize(event?) {
     this.innerWidth = window.innerWidth;
-    if (window.innerWidth >= 1000) {
+    if (window.innerWidth >= 1450) {
       this.screenSize = 'month';
-    } else if (window.innerWidth <= 1000) {
+    } else if (window.innerWidth <= 1450) {
       this.screenSize = 'week';
       if (window.innerWidth <= 500) {
         this.screenSize = 'day';
@@ -34,9 +34,9 @@ export class TvSeriesCalendarComponent implements OnInit {
 
   ngOnInit() {
     this.innerWidth = window.innerWidth;
-    if (window.innerWidth >= 1000) {
+    if (window.innerWidth >= 1450) {
       this.screenSize = 'month';
-    } else if (window.innerWidth <= 1000) {
+    } else if (window.innerWidth <= 1450) {
       this.screenSize = 'week';
       if (window.innerWidth <= 500) {
         this.screenSize = 'day';

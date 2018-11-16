@@ -13,6 +13,7 @@ export class TvSeriesListCardComponent implements OnInit {
   @Input() station: string;
   @Input() cast: any[];
   @Input() img: string;
+  @Input() episodeName: string;
   constructor() {
   }
 

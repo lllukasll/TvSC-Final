@@ -25,4 +25,14 @@ export class TvSeriesService {
     const url = `${this.BASE_URL}/Calendar/month/${monthNumber}`;
     return this.http.get(url);
   }
+
+  getCurrentWeekEpisodes(dateModel): Observable<any> {
+    const dates = {
+      dateFrom: dateModel.firstOfWeek,
+      dateTo: dateModel.lastOfWeek
+    };
+    console.log(dates)
+    const url = `${this.BASE_URL}/Calendar/week`;
+    return this.http.post<any>(url, dates);
+  }
 }

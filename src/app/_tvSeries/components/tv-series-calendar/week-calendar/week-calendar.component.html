@@ -1,3 +1,32 @@
-<p>
-  week-calendar works!
-</p>
+<div class='content' [ngClass]="{disabled: loading | async}">
+    <div class="week-bar-container">
+      <div class="previous-week" (click)='prevWeek()'><i class="fa fa-backward"></i>Poprzedni tydzień</div>
+      <div class="current-week">{{getWeekName()}}</div>
+      <div class="next-week" (click)='nextWeek()'>Następny tydzień<i class="fa fa-forward"></i></div>
+    </div>
+
+    <div *ngIf='loading | async' class="spinner">
+      <app-spinner ></app-spinner>
+    </div>
+
+  <div class='day-container' *ngFor='let day of week'>
+    <div class='day-name'>{{getDayName(day.mDate.day())}}</div>
+    <div class='previous-arrow'><i class="fa fa-chevron-left"></i></div>
+    <div class='tv-shows-container'>
+      <div class='tv-shows-holder'>
+        <app-tv-series-list-card
+        *ngFor='let tvSeries of getDayEpisodes(day.mDate.date())'
+          [id]='tvSeries.tvShowId'
+          [name]='tvSeries.tvShowName'
+          [station]='"AMC"'
+          [description]='"Lorem ipsum dolor sit amet enim"'
+          [cast]='[]'
+          [tags]='[]'
+          [episodeName]='tvSeries.episodeName'
+          [img]='tvSeries.photoName'>
+        </app-tv-series-list-card>
+      </div>
+    </div>
+    <div class='next-arrow'><i class="fa fa-chevron-right"></i></div>
+  </div>
+</div>

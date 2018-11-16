@@ -13,7 +13,10 @@
       <span>4/5</span>
     </div>
     <div class="tags">
-      <span *ngFor='let tag of tags' class={{tag.type}}>{{tag.name}}</span>
+      <ng-container *ngIf='!episodeName || episodeName.length === 0'>
+        <span *ngFor='let tag of tags' class={{tag.type}}>{{tag.name}}</span>
+      </ng-container>
+      <span class='episodeName' *ngIf='episodeName && episodeName.length > 0'>{{episodeName}}</span>
     </div>
     <div class="info">
       <p>{{description}}</p>

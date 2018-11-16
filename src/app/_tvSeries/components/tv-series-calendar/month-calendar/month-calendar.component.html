@@ -1,7 +1,7 @@
 <div class="calendar-container">
   <div class="month-bar-container">
     <div class="previous-month" (click)='prevMonth()'><i class="fa fa-backward"></i>Poprzedni miesiąc</div>
-    <div class="current-month">Listopad</div>
+    <div class="current-month">{{getCurrentMonthName()}}</div>
     <div class="next-month" (click)='nextMonth()'>Następny miesiąc<i class="fa fa-forward"></i></div>
   </div>
 
@@ -21,14 +21,14 @@
     </div>
     <ng-container *ngFor="let week of weeks">
       <ng-container *ngFor="let day of week">
-        <div class="day-container" [ngClass]="{disabled: !isSelectedMonth(day.mDate)}">
+        <div class="day-container" [ngClass]="{disabled: !isSelectedMonth(day.mDate), tooday: isToday(day.mDate)}">
           <div class="day-title">
             {{day.mDate.date()}}
           </div>
           <hr style="opacity: 0.4;"/>
 
-          <ng-container *ngFor="let episode of getDayEpisodes(day.mDate.date())">
-            <div class="tv-show-container">
+          <ng-container *ngFor="let episode of getDayEpisodes(day.mDate.date(), day.mDate.month())">
+            <div class="tv-show-container" routerLink='/tvSeries/{{episode.tvShowId}}'>
                 <img src="http://localhost:50388/tvShow/photo/{{episode.backgroundPhotoName}}" class="tv-show-picture" />
 
                 <span class="rating">
@@ -52,91 +52,6 @@
           </ng-container>
         </div>
       </ng-container>
-      <!--
-      <div class="day-container">
-        <div class="day-title">
-          1
-        </div>
-        <hr style="opacity: 0.4;"/>
-
-        <div class="tv-show-container">
-          <img src="../../../../../assets/img/breakingBad/banner.png" class="tv-show-picture" />
-
-          <span class="rating">
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star" aria-hidden="true"></i>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-          </span>
-
-          <span class="title">
-            Breaking Bad
-          </span>
-          <span class="episode">
-            Pilot
-          </span>
-          <span class="description">
-            Lorem ipsum dolor sit amet enim ...
-          </span>
-        </div>
-
-        <div class="tv-show-container">
-          <img src="../../../../../assets/img/banner.jpg" class="tv-show-picture" />
-
-          <span class="rating">
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star-o" aria-hidden="true"></i>
-              <i class="fa fa-star-o" aria-hidden="true"></i>
-            </span>
-
-          <span class="title">
-            Sherlock
-          </span>
-          <span class="episode">
-            A Study in Pink
-          </span>
-          <span class="description">
-            Lorem ipsum dolor sit amet enim ...
-          </span>
-        </div>
-
-        <div class="tv-show-container">
-          <img src="../../../../../assets/img/houseOfCards/banner.jpeg" class="tv-show-picture" />
-
-          <span class="rating">
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star-o" aria-hidden="true"></i>
-              <i class="fa fa-star-o" aria-hidden="true"></i>
-            </span>
-
-          <span class="title">
-            House of Cards
-          </span>
-          <span class="episode">
-            Chapter 1
-          </span>
-          <span class="description">
-            Lorem ipsum dolor sit amet enim ...
-          </span>
-        </div>
-      </div>
-
-      <div class="day-container">
-        <div class="day-title">
-          2
-        </div>
-        <hr style="opacity: 0.4;"/>
-      </div>
-      <div class="day-container"></div>
-      <div class="day-container"></div>
-      <div class="day-container"></div>
-      <div class="day-container"></div>
-      <div class="day-container"></div>-->
     </ng-container>
   </div>
 

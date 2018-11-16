@@ -1,6 +1,7 @@
 import * as moment from 'moment';
 
 export interface ICalendarEpisode {
+  tvShowId: number;
   tvShowName: string;
   seasonNumber: number;
   episodeNumber: number;
@@ -8,5 +9,6 @@ export interface ICalendarEpisode {
   airingDate: string;
   tvSeriesRatings: any;
   backgroundPhotoName: string;
+  photoName: string;
   description: string;
 }
