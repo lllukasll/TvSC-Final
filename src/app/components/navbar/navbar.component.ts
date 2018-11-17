@@ -7,7 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  loginFormOpened: boolean;
+  registerFormOpened: boolean;
+  constructor() {
+    this.loginFormOpened = false;
+    this.registerFormOpened = false;
+  }
+
+  toogleLoginForm(): void {
+    this.loginFormOpened = !this.loginFormOpened;
+  }
+
+  toogleRegisterForm(): void {
+    this.registerFormOpened = !this.registerFormOpened;
+  }
 
   ngOnInit() {
   }

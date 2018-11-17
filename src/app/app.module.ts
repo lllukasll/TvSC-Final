@@ -19,6 +19,8 @@ import { AdminModule } from './_admin/admin.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { ClickOutsideDirective } from './directives/clickOutsideDirective';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     PageNotFoundComponent,
     WelcomeComponent,
     NavbarComponent,
+    ModalComponent,
+    ClickOutsideDirective
   ],
   imports: [
     HttpClientModule,

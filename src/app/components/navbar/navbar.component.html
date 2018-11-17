@@ -4,11 +4,41 @@
   <a [routerLink]="['/tvSeries']" >Lista seriali</a>
 
   <div style="float: right">
-    <a href="#contact">Zaloguj się</a>
-    <a href="#about">Zarejestruj się</a>
+    <a (click)='toogleLoginForm()'>Zaloguj się</a>
+    <a (click)='toogleRegisterForm()'>Zarejestruj się</a>
   </div>
 
   <a class="icon">
     <i class="fa fa-bars"></i>
   </a>
 </div>
+
+<app-modal
+  [width]='400'
+  [height]='500'
+  [border_radius]='"15px"'
+  [opened]='loginFormOpened'
+  (closed)='toogleLoginForm()'
+>
+  <div class="sing-up-person">
+    <i class="fa fa-user"></i>
+  </div>
+  <div class="title">
+    Logowanie
+  </div>
+</app-modal>
+
+<app-modal
+  [width]='400'
+  [height]='600'
+  [border_radius]='"15px"'
+  [opened]='registerFormOpened'
+  (closed)='toogleRegisterForm()'
+>
+  <div class="sing-up-person">
+    <i class="fa fa-user"></i>
+  </div>
+  <div class="title">
+    Rejestracja
+  </div>
+</app-modal>

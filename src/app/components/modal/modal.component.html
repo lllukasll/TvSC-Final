@@ -1,0 +1,8 @@
+<div *ngIf='opened' class="background">
+  <div #modal class="modal-container animate" [style.background-color]='background' [style.border]='border' [style.border-radius]='border_radius' [style.width.px]='width' [style.height.px]='height'>
+    <div class="close" (click)='onClose()'>
+        <i class="fa fa-times"></i>
+    </div>
+    <ng-content></ng-content>
+  </div>
+</div>
