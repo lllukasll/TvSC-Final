@@ -142,9 +142,6 @@
     }
 
     .tv-shows-container {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
       position: absolute;
       left: 90px;
       right: 40px;
@@ -153,11 +150,28 @@
 
       .tv-shows-holder {
         position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
         height: 450px;
+        align-items: center;
+        max-height: 450px;
         width: 100%;
         overflow-x: hidden;
         overflow-y: hidden;
-        text-align: center;
+
+        /*&::-webkit-scrollbar {
+          display: none;
+        }*/
+
+        .item {
+          position: relative;
+          display: inline-block;
+          height: 90%;
+          min-width: 300px;
+          margin: 0 10px;
+          background-color: aliceblue;
+        }
       }
     }
   }

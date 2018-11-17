@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer2, ElementRef } from '@angular/core';
 import * as moment from 'moment';
 import { CalendarDate } from '../../../models/calendarDate';
 import * as _ from 'lodash';
@@ -20,9 +20,135 @@ export class WeekCalendarComponent implements OnInit {
   week: CalendarDate[] = [];
   loading: Observable<boolean>;
   currentWeekEpisodes$: ICalendarEpisode[];
+  @ViewChild('tvShowsHolder0', { read: ElementRef }) public container0: ElementRef<any>;
+  @ViewChild('tvShowsHolder1', { read: ElementRef }) public container1: ElementRef<any>;
+  @ViewChild('tvShowsHolder2', { read: ElementRef }) public container2: ElementRef<any>;
+  @ViewChild('tvShowsHolder3', { read: ElementRef }) public container3: ElementRef<any>;
+  @ViewChild('tvShowsHolder4', { read: ElementRef }) public container4: ElementRef<any>;
+  @ViewChild('tvShowsHolder5', { read: ElementRef }) public container5: ElementRef<any>;
+  @ViewChild('tvShowsHolder6', { read: ElementRef }) public container6: ElementRef<any>;
 
-  constructor(private store: Store<fromTvSeries.State>) {
+  constructor(private store: Store<fromTvSeries.State>,private el: ElementRef, private renderer: Renderer2) {
     this.generateCalendar();
+    
+  }
+
+  scrollToRight(day: number): void {
+    var clickedElement = this.container0;
+    if(day == 0) {
+      clickedElement = this.container0;
+    }else if(day == 1) {
+      clickedElement = this.container1;
+    }else if(day == 2) {
+      clickedElement = this.container2;
+    }else if(day == 3) {
+      clickedElement = this.container3;
+    }else if(day == 4) {
+      clickedElement = this.container4;
+    }else if(day == 5) {
+      clickedElement = this.container5;
+    }else if(day == 6) {
+      clickedElement = this.container6;
+    }
+
+    const screenLeft = clickedElement.nativeElement.scrollWidth - clickedElement.nativeElement.scrollLeft -  clickedElement.nativeElement.offsetWidth;
+    console.log(clickedElement);
+    console.log(screenLeft);
+    let scrollToDecrese = 'translateX(315px)';
+
+    if(screenLeft < 315)
+    {
+      scrollToDecrese = "translateX(" + screenLeft + 'px)';
+    }
+
+    if(screenLeft < 315)
+    {
+      clickedElement.nativeElement.scrollLeft += screenLeft;
+    }else{
+      clickedElement.nativeElement.scrollLeft += 315;
+    }
+
+    var keyframes = [
+      { 
+        transform: scrollToDecrese, 
+      },
+      { 
+        transform: 'translate(0)',
+      }
+    ];
+
+    var options = {
+      iterations: 1,
+      iterationStart: 0,
+      delay: 0,
+      endDelay: 0,
+      direction: 'normal',
+      duration: 1000,
+      fill: 'none',
+      easing: 'ease-in-out',
+    }
+    
+    for (let index = 0; index < clickedElement.nativeElement.children.length; index++) {
+      clickedElement.nativeElement.children[index].animate(keyframes, options);
+    }
+  }
+
+  scrollToLeft(day: number): void {
+    var clickedElement = this.container0;
+    if(day == 0) {
+      clickedElement = this.container0;
+    }else if(day == 1) {
+      clickedElement = this.container1;
+    }else if(day == 2) {
+      clickedElement = this.container2;
+    }else if(day == 3) {
+      clickedElement = this.container3;
+    }else if(day == 4) {
+      clickedElement = this.container4;
+    }else if(day == 5) {
+      clickedElement = this.container5;
+    }else if(day == 6) {
+      clickedElement = this.container6;
+    }
+
+    const screenLeft = clickedElement.nativeElement.scrollLeft;
+    let scrollToDecrese = 'translateX(-315px)';
+
+    if(screenLeft < 315)
+    {
+      scrollToDecrese = "translateX(-" + screenLeft + 'px)';
+    }
+
+    if(screenLeft < 315)
+    {
+      clickedElement.nativeElement.scrollLeft -= screenLeft;
+    }else{
+      clickedElement.nativeElement.scrollLeft -= 315;
+    }
+
+    var keyframes = [
+      { 
+        transform: scrollToDecrese, 
+      },
+      { 
+        transform: 'translateX(0)',
+      }
+    ];
+
+    var options = {
+      iterations: 1,
+      iterationStart: 0,
+      delay: 0,
+      endDelay: 0,
+      direction: 'normal',
+      duration: 1000,
+      fill: 'none',
+      easing: 'ease-in-out',
+    }
+    
+    for (let index = 0; index < clickedElement.nativeElement.children.length; index++) {
+      clickedElement.nativeElement.children[index].animate(keyframes, options);
+    }
   }
 
   isToday(date: moment.Moment): boolean {

@@ -9,13 +9,98 @@
       <app-spinner ></app-spinner>
     </div>
 
+    <div class='day-container'>
+      <div class='day-name'>Poniedziałek</div>
+      <div class='previous-arrow' (click)='scrollToLeft(0)'><i class="fa fa-chevron-left"></i></div>
+      <div class='tv-shows-container'>
+        <div #tvShowsHolder0 class='tv-shows-holder'>
+          <div class='item' *ngFor='let tvSeries of getDayEpisodes(firstOfWeek.date() + 0)'>
+          </div>
+        </div>
+      </div>
+      <div class='next-arrow' (click)='scrollToRight(0)'><i class="fa fa-chevron-right"></i></div>
+    </div>
+
+    <div class='day-container'>
+      <div class='day-name'>Wtorek</div>
+      <div class='previous-arrow' (click)='scrollToLeft(1)'><i class="fa fa-chevron-left"></i></div>
+      <div class='tv-shows-container'>
+        <div #tvShowsHolder1 class='tv-shows-holder'>
+          <div class='item' *ngFor='let tvSeries of getDayEpisodes(firstOfWeek.date() + 1)'>
+          </div>
+        </div>
+      </div>
+      <div class='next-arrow' (click)='scrollToRight(1)'><i class="fa fa-chevron-right"></i></div>
+    </div>
+
+    <div class='day-container'>
+      <div class='day-name'>Środa</div>
+      <div class='previous-arrow' (click)='scrollToLeft(2)'><i class="fa fa-chevron-left"></i></div>
+      <div class='tv-shows-container'>
+        <div #tvShowsHolder2 class='tv-shows-holder'>
+          <div class='item' *ngFor='let tvSeries of getDayEpisodes(firstOfWeek.date() + 2)'>
+          </div>
+        </div>
+      </div>
+      <div class='next-arrow' (click)='scrollToRight(2)'><i class="fa fa-chevron-right"></i></div>
+    </div>
+
+    <div class='day-container'>
+      <div class='day-name'>Czwartek</div>
+      <div class='previous-arrow' (click)='scrollToLeft(3)'><i class="fa fa-chevron-left"></i></div>
+      <div class='tv-shows-container'>
+        <div #tvShowsHolder3 class='tv-shows-holder'>
+          <div class='item' *ngFor='let tvSeries of getDayEpisodes(firstOfWeek.date() + 3)'>
+          </div>
+        </div>
+      </div>
+      <div class='next-arrow' (click)='scrollToRight(3)'><i class="fa fa-chevron-right"></i></div>
+    </div>
+
+    <div class='day-container'>
+      <div class='day-name'>Piątek</div>
+      <div class='previous-arrow' (click)='scrollToLeft(4)'><i class="fa fa-chevron-left"></i></div>
+      <div class='tv-shows-container'>
+        <div #tvShowsHolder4 class='tv-shows-holder'>
+          <div class='item' *ngFor='let tvSeries of getDayEpisodes(firstOfWeek.date() + 4)'>
+          </div>
+        </div>
+      </div>
+      <div class='next-arrow' (click)='scrollToRight(4)'><i class="fa fa-chevron-right"></i></div>
+    </div>
+
+    <div class='day-container'>
+      <div class='day-name'>Sobota</div>
+      <div class='previous-arrow' (click)='scrollToLeft(5)'><i class="fa fa-chevron-left"></i></div>
+      <div class='tv-shows-container'>
+        <div #tvShowsHolder5 class='tv-shows-holder'>
+          <div class='item' *ngFor='let tvSeries of getDayEpisodes(firstOfWeek.date() + 5)'>
+          </div>
+        </div>
+      </div>
+      <div class='next-arrow' (click)='scrollToRight(5)'><i class="fa fa-chevron-right"></i></div>
+    </div>
+
+    <div class='day-container'>
+      <div class='day-name'>Niedziela</div>
+      <div class='previous-arrow' (click)='scrollToLeft(6)'><i class="fa fa-chevron-left"></i></div>
+      <div class='tv-shows-container'>
+        <div #tvShowsHolder6 class='tv-shows-holder'>
+          <div class='item' *ngFor='let tvSeries of getDayEpisodes(firstOfWeek.date() + 6)'>
+          </div>
+        </div>
+      </div>
+      <div class='next-arrow' (click)='scrollToRight(6)'><i class="fa fa-chevron-right"></i></div>
+    </div>
+
+    <!--
   <div class='day-container' *ngFor='let day of week'>
     <div class='day-name'>{{getDayName(day.mDate.day())}}</div>
     <div class='previous-arrow'><i class="fa fa-chevron-left"></i></div>
     <div class='tv-shows-container'>
-      <div class='tv-shows-holder'>
+      <div #tvShowsHolder class='tv-shows-holder'>
         <app-tv-series-list-card
-        *ngFor='let tvSeries of getDayEpisodes(day.mDate.date())'
+          *ngFor='let tvSeries of getDayEpisodes(day.mDate.date())'
           [id]='tvSeries.tvShowId'
           [name]='tvSeries.tvShowName'
           [station]='"AMC"'
@@ -27,6 +112,6 @@
         </app-tv-series-list-card>
       </div>
     </div>
-    <div class='next-arrow'><i class="fa fa-chevron-right"></i></div>
-  </div>
+    <div class='next-arrow' (click)='scrollToRight(day.mDate.day())'><i class="fa fa-chevron-right"></i></div>
+  </div>-->
 </div>
