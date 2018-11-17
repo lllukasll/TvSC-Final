@@ -52,8 +52,6 @@ export class WeekCalendarComponent implements OnInit {
     }
 
     const screenLeft = clickedElement.nativeElement.scrollWidth - clickedElement.nativeElement.scrollLeft -  clickedElement.nativeElement.offsetWidth;
-    console.log(clickedElement);
-    console.log(screenLeft);
     let scrollToDecrese = 'translateX(315px)';
 
     if(screenLeft < 315)
