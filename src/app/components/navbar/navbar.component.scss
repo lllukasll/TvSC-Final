@@ -89,3 +89,36 @@
     margin-top: 60px;
     color: rgba(255, 255, 255, 0.596);
   }
+
+  .change-form {
+    position: absolute;
+    bottom: -50px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.575);
+
+    .question {
+      display: inline;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.452);
+      letter-spacing: 1px;
+      margin-right: 10px;
+    }
+
+    .move-link {
+      display: inline;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.644);
+      letter-spacing: 1px;
+      transition: 0.5s;
+      cursor: pointer;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.877);
+      }
+    }
+  }
