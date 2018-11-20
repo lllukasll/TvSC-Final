@@ -21,6 +21,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ClickOutsideDirective } from './directives/clickOutsideDirective';
+import { FormComponent } from './components/form/form.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ClickOutsideDirective } from './directives/clickOutsideDirective';
     WelcomeComponent,
     NavbarComponent,
     ModalComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    FormComponent
   ],
   imports: [
     HttpClientModule,

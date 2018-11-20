@@ -3,9 +3,14 @@
   <a [routerLink]="['/calendar']" >Kalendarz</a>
   <a [routerLink]="['/tvSeries']" >Lista seriali</a>
 
-  <div style="float: right">
+  <div style="float: right" *ngIf='!isAuthenticated$'>
     <a (click)='toogleLoginForm()'>Zaloguj się</a>
     <a (click)='toogleRegisterForm()'>Zarejestruj się</a>
+  </div>
+
+  <div style="float: right" *ngIf='isAuthenticated$'>
+    <a>{{loggedUser$.userName}}</a>
+    <a (click)='onLogoutClicked()'>Wyloguj się</a>
   </div>
 
   <a class="icon">
@@ -15,7 +20,7 @@
 
 <app-modal
   [width]='400'
-  [height]='500'
+  [height]='loginErrors$ !== null ? 355 : 350'
   [border_radius]='"15px"'
   [opened]='loginFormOpened'
   (closed)='toogleLoginForm()'
@@ -26,14 +31,24 @@
   <div class="title">
     Logowanie
   </div>
+
+  <app-form
+    [formSettings]='loginFormSettings'
+    [submitBtnName]='"Zaloguj się"'
+    [submitFunction]='onLoginSubmit'
+    [isDoingRequest]='isloading$'
+  ></app-form>
   <div class="change-form">
     <div class="question">Nie masz jeszcze konta ?</div> <div class="move-link">Zarejestruj się</div>
+  </div>
+  <div class="login-error">
+    <span *ngIf='loginErrors$ !== null' class='errors'>{{loginErrors$}}</span>
   </div>
 </app-modal>
 
 <app-modal
   [width]='400'
-  [height]='600'
+  [height]='480'
   [border_radius]='"15px"'
   [opened]='registerFormOpened'
   (closed)='toogleRegisterForm()'
@@ -44,6 +59,11 @@
   <div class="title">
     Rejestracja
   </div>
+  <!--
+  <app-form
+    [formSettings]='registerForm'
+    [submitBtnName]='"Zarejestruj się"'
+  ></app-form> -->
   <div class="change-form">
     <div class="question">Masz już konto ?</div> <div class="move-link">Zaloguj się</div>
   </div>

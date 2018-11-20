@@ -19,7 +19,7 @@ export class ModalComponent implements OnInit, OnChanges {
   @ViewChild('modal', { read: ElementRef }) public modal: ElementRef<any>;
   @HostListener('document:click', ['$event'])
     clickout(event) {
-      if (this.fullyOpened && !this.modal.nativeElement.contains(event.target)) {
+      if (this.opened && this.fullyOpened && !this.modal.nativeElement.contains(event.target)) {
         this.onClose();
       }
   }
@@ -37,16 +37,14 @@ export class ModalComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log('ngOnChanges');
     if (this.opened) {
-      console.log('opened true');
       this.delay(this.delayTime).then(() => this.fullyOpened = true);
     }
   }
 
   async delay(ms: number) {
     await new Promise(resolve => setTimeout(() => resolve(), ms));
-}
+  }
 
   onClose(): void {
     this.closed.emit();

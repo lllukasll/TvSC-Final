@@ -7,7 +7,12 @@ export enum AuthActionTypes {
   SIGNUP = '[Auth] Signup',
   SIGNUP_SUCCESS = '[Auth] Signup Success',
   SIGNUP_FAILURE = '[Auth] Signup Failure',
-  LOGOUT = '[Auth] Logout'
+  GET_USER_BY_COOKIE = '[Auth] Get User By Cookie',
+  GET_USER_BY_COOKIE_SUCCESS = '[Auth] Get User By Cookie Success',
+  GET_USER_BY_COOKIE_FAILURE = '[Auth] Get User By Cookie Failure',
+  LOGOUT = '[Auth] Logout',
+  LOGOUT_SUCCESS = '[Auth] Logout Success',
+  LOGOUT_FAILURE = '[Auth] Logout Failure'
 }
 
 export class LogIn implements Action {
@@ -17,11 +22,27 @@ export class LogIn implements Action {
 
 export class LogInSuccess implements Action {
   readonly type = AuthActionTypes.LOGIN_SUCCESS;
+  constructor(public payload: any) { }
 }
 
 export class LogInFailure implements Action {
   readonly type = AuthActionTypes.LOGIN_FAILURE;
   constructor(public payload: any) {}
+}
+
+export class GetUserByCookie implements Action {
+  readonly type = AuthActionTypes.GET_USER_BY_COOKIE;
+  constructor() { }
+}
+
+export class GetUserByCookieSuccess implements Action {
+  readonly type = AuthActionTypes.GET_USER_BY_COOKIE_SUCCESS;
+  constructor(public payload: any) { }
+}
+
+export class GetUserByCookieFailure implements Action {
+  readonly type = AuthActionTypes.GET_USER_BY_COOKIE_FAILURE;
+  constructor(public payload: any) { }
 }
 
 export class SignUp implements Action {
@@ -42,6 +63,15 @@ export class Logout implements Action {
   readonly type = AuthActionTypes.LOGOUT;
 }
 
+export class LogoutSuccess implements Action {
+  readonly type = AuthActionTypes.LOGOUT_SUCCESS;
+}
+
+export class LogoutFailure implements Action {
+  readonly type = AuthActionTypes.LOGOUT_FAILURE;
+  constructor(public payload: any) { }
+}
+
 export type All =
   | LogIn
   | LogInSuccess
@@ -49,4 +79,11 @@ export type All =
   | SignUp
   | SignUpSuccess
   | SignUpFailure
-  | Logout;
+  | Logout
+  | LogoutSuccess
+  | LogoutFailure
+  | LogInSuccess
+  | LogoutFailure
+  | GetUserByCookie
+  | GetUserByCookieSuccess
+  | GetUserByCookieFailure;

@@ -16,6 +16,11 @@ export class AuthService {
     return this.http.post<Credentials>(url, {login, password}, { withCredentials: true });
   }
 
+  getUserByCookie(): Observable<any> {
+    const url = `${this.BASE_URL}/account/getUserByCookie`;
+    return this.http.get(url, { withCredentials: true});
+  }
+
   signUp(userName: string, firstName: string, lastName: string, email: string,
          password: string, confirmPassword: string): Observable<Credentials> {
     const url = `${this.BASE_URL}/account/register`;
