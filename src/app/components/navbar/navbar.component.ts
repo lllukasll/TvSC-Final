@@ -4,10 +4,12 @@ import { Credentials } from '../../_user/models/credentials';
 import { Store, select } from '@ngrx/store';
 import * as fromAuth from '../../_user/reducers';
 import * as fromShared from '../../_shared/reducers';
-import { LogIn, Logout } from '../../_user/actions/auth.actions';
+import { LogIn, Logout, SignUp } from '../../_user/actions/auth.actions';
 import { isSpinnerShowing } from '../../_shared/reducers/index';
 import { LoginModalOpen, RegisterModalOpen, CloseModal } from '../../_shared/actions/modal';
+import { NotificationAdded } from '../../_shared/actions/notification';
 import { isLoginModalOpened } from '../../_shared/reducers/index';
+import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -19,8 +21,10 @@ export class NavbarComponent implements OnInit {
   loginModel: Credentials = new Credentials();
 
   loginFormOpened: boolean;
+  loginFormOpened$: Observable<boolean>;
   loginErrors$: any;
   registerFormOpened: boolean;
+  registerFormOpened$: Observable<boolean>;
   isloading$ = false;
   loginFormSettings: FormModel[] = [
     { label: '', placeholder: 'Podaj email...', type: 'text', mode: 'input', initialValue: null,
@@ -34,6 +38,41 @@ export class NavbarComponent implements OnInit {
         }, listElements: []
     },
   ];
+
+  registerFormSettings: FormModel[] = [
+    { label: '', placeholder: 'Podaj login...', type: 'text', mode: 'input', initialValue: null,
+        validationSettings: {
+            minLength: 7, maxLength: 25, required: true
+        }, listElements: []
+    },
+    { label: '', placeholder: 'Podaj imię...', type: 'text', mode: 'input', initialValue: null,
+        validationSettings: {
+            minLength: 3, maxLength: 25, required: true
+        }, listElements: []
+    },
+    { label: '', placeholder: 'Podaj nazwisko...', type: 'text', mode: 'input', initialValue: null,
+        validationSettings: {
+            minLength: 3, maxLength: 25, required: true
+        }, listElements: []
+    },
+    {
+      label: '', placeholder: 'Podaj email...', type: 'text',  mode: 'input', initialValue: null,
+      validationSettings: {
+        minLength: 5, maxLength: 25, required: true
+      }, listElements: []
+    },
+    { label: '', placeholder: 'Podaj hasło...', type: 'password', mode: 'input', initialValue: null,
+        validationSettings: {
+            minLength: 7, maxLength: 25, required: true, shouldShowOneUppercase: 1, isContainsNumber: 1, isContainsSpecialChars: 1
+        }, listElements: []
+    },
+    { label: '', placeholder: 'Powtórz hasło...', type: 'password', mode: 'input', initialValue: null,
+        validationSettings: {
+            // tslint:disable-next-line:max-line-length
+            minLength: 7, maxLength: 25, required: true, shouldShowOneUppercase: 1, isContainsNumber: 1, isContainsSpecialChars: 1
+        }, listElements: []
+    }
+  ];
   registerForm: FormModel[];
   isAuthenticated$ = false;
   loggedUser$: any = null;
@@ -41,6 +80,10 @@ export class NavbarComponent implements OnInit {
   constructor(private store: Store<fromAuth.State>) {
     this.loginFormOpened = false;
     this.registerFormOpened = false;
+  }
+
+  addNotificationTmp(): void {
+    this.store.dispatch(new NotificationAdded('asdsdasdasdasdssaddas'));
   }
 
   toogleLoginForm(): void {
@@ -76,6 +119,19 @@ export class NavbarComponent implements OnInit {
     this.store.dispatch(new LogIn(payload));
   }
 
+  onSignUpSubmit = (registerForm: any) => {
+    const payload = {
+      userName: registerForm[0].value,
+      firstName: registerForm[1].value,
+      lastName: registerForm[2].value,
+      email: registerForm[3].value,
+      password: registerForm[4].value,
+      confirmPassword: registerForm[5].value
+    };
+
+    this.store.dispatch(new SignUp(payload));
+  }
+
   ngOnInit() {
     this.store.select(isSpinnerShowing).subscribe(
       loading => this.isloading$ = loading
@@ -93,11 +149,12 @@ export class NavbarComponent implements OnInit {
       loggedUser => { this.loggedUser$ = loggedUser; }
     );
 
-    //this.loginFormOpened = this.store.select(fromShared.isLoginModalOpened);
+    this.loginFormOpened$ = this.store.select(fromShared.isLoginModalOpened);
     this.store.pipe(select(fromShared.isLoginModalOpened)).subscribe(
       loginModalState => { this.loginFormOpened = loginModalState; }
     );
 
+    this.registerFormOpened$ = this.store.select(fromShared.isRegisterModalOpened);
     this.store.select(fromShared.isRegisterModalOpened).subscribe(
       registerModalState => { this.registerFormOpened = registerModalState; }
     );

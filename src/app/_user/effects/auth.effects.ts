@@ -136,15 +136,16 @@ export class AuthEffects  {
         map(() =>  new SignUpSuccess()),
         catchError((error) => {
           console.log(error);
-          return of(new SignUpFailure({error: error}));
+          return of(new SignUpFailure({error: this.dataService.getErrors(error)}));
         })
       );
     })
   );
 
-  @Effect({dispatch: false})
-  SignUpSuccess: Observable<any> = this.actions.pipe(
-    ofType(AuthActionTypes.LOGIN_SUCCESS)
+  @Effect()
+  SignUpSuccess: Observable<any> = this.actions
+    .ofType(AuthActionTypes.SIGNUP_SUCCESS)
+    .pipe(map(() => new CloseModal())
   );
 
   @Effect({dispatch: false})

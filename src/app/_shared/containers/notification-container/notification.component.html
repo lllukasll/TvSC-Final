@@ -1,0 +1,11 @@
+<div class="notification-container">
+  <ng-container *ngFor='let notification of notifications$.reverse()'>
+    <app-notification
+      [notification]='notification'
+    ></app-notification>
+  </ng-container>
+
+ <!-- <div (click)='onClick(notification.id)' class="notification" *ngFor='let notification of notifications$.reverse()'>
+    <div class="text">{{notification.content}}</div>
+  </div> -->
+</div>

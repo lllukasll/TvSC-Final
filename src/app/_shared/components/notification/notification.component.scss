@@ -1,0 +1,70 @@
+.removing {
+  animation: fadeOut 0.6s;
+}
+
+/*
+@keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}*/
+
+@keyframes fadeOut {
+  from {right: 0; opacity: 1;}
+  to {right: -360px; opacity: 0;}
+}
+
+.fadeIn {
+  animation: animateFromRight 0.6s;
+}
+
+.notification {
+  position: relative;
+  width: 360px;
+  min-height: 50px;
+  max-height: 100px;
+  background-color: rgba(75, 75, 75, 0.514);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid rgba(105, 105, 105, 0.692);
+  border-right: none;
+  font-family: 'PT Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.678);
+  z-index: 1000;
+  //animation: animateFromRight 0.6s;
+  overflow-x: auto;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: url('../../../../assets/icons/password.png');
+
+  &:hover {
+    background-color: rgba(75, 75, 75, 0.712);
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: rgba(255,255,255,0.3);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.4);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .text {
+    position: relative;
+    width: 90%;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@keyframes animateFromRight {
+  from {right: -360px; opacity: 0; margin-top: 0px}
+  to {right: 0px; opacity: 1; margin-top: 10px}
+}

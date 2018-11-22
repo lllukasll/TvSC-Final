@@ -43,7 +43,9 @@ export function reducer(state = initialState, action: All): State {
         case AuthActionTypes.SIGNUP_FAILURE: {
             return {
                 ...state,
-                errorMessage: 'Error message'
+                isAuthenticated: false,
+                loggedUser: null,
+                errorMessage: action.payload.error
             };
         }
         case AuthActionTypes.GET_USER_BY_COOKIE_SUCCESS: {

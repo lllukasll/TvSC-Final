@@ -12,7 +12,8 @@ const errorsNamingFunctions: {} = {
   isContainsNumber: (inputName, specifiedValue) => `Pole ${inputName} musi zawierać ${specifiedValue} ${specifiedValue < 2 ? 'cyfrę' : 'cyfry'}`,
   // tslint:disable-next-line:max-line-length
   isContainsSpecialChars: (inputName, specifiedValue) => `Pole ${inputName} musi zawierać ${specifiedValue} ${specifiedValue < 2 ? 'znak specjalny' : 'znaki specjalne'}`,
-  mustHaveLength: (inputName, specifiedValue) => `Pole ${inputName} musi mieć ${specifiedValue} znaków `
+  mustHaveLength: (inputName, specifiedValue) => `Pole ${inputName} musi mieć ${specifiedValue} znaków `,
+  mustBeSame: (inputName, specifiedValue) => `Pola ${inputName} nie są takie same`
 };
 
 @Injectable({
@@ -27,8 +28,13 @@ export class FormService {
     shouldShowOneUppercase: (value, specifiedValue) => this.handleUppercaseLetter(value, specifiedValue),
     isContainsNumber: (value, specifiedValue) => this.handleNumbers(value, specifiedValue),
     isContainsSpecialChars: (value, specifiedValue) => this.handleCharacters(value, specifiedValue),
-    mustHaveLength: (value, specifiedValue) => this.handleLengthEqualTo(value.length, specifiedValue)
+    mustHaveLength: (value, specifiedValue) => this.handleLengthEqualTo(value.length, specifiedValue),
+    mustBeSame: (value, specifiedValue) => this.checkIfTheSame(value, specifiedValue)
   };
+
+  checkIfTheSame(value: string, specifiedValue: string) {
+    return value !== specifiedValue;
+  }
 
   handleMinLength(valueLength: number, specifiedValue: number) {
     return valueLength < specifiedValue;

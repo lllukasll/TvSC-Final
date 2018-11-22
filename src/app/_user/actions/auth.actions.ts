@@ -12,7 +12,7 @@ export enum AuthActionTypes {
   GET_USER_BY_COOKIE_FAILURE = '[Auth] Get User By Cookie Failure',
   LOGOUT = '[Auth] Logout',
   LOGOUT_SUCCESS = '[Auth] Logout Success',
-  LOGOUT_FAILURE = '[Auth] Logout Failure'
+  LOGOUT_FAILURE = '[Auth] Logout Failure',
 }
 
 export class LogIn implements Action {
