@@ -13,9 +13,9 @@ const initialState: State = {
 export function reducer(state: State = initialState, action: ModalActions) {
   switch (action.type) {
     case LOGIN_MODAL_OPEN:
-      return { ...state, loginModalOpened: true };
+      return { ...initialState, loginModalOpened: true };
     case REGISTER_MODAL_OPEN:
-      return { ...initialState, registerModalOpened: true }
+      return { ...initialState, registerModalOpened: true };
     case CLOSE_MODAL:
       return initialState;
     default:

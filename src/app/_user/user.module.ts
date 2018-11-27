@@ -9,7 +9,7 @@ import { UserComponent } from './containers/user/user.component';
 
 const userRoutes: Routes = [
   {
-    path: 'user', component: UserComponent
+    path: 'user/:userId', component: UserComponent
   }
 ];
 

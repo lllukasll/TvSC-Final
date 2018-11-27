@@ -1,0 +1,26 @@
+.text {
+  margin-bottom: 5px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.timer {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+
+  .number {
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    color: rgba(255, 255, 255, 0.664);
+    background-color: rgba(199, 199, 199, 0.24);
+    border-radius: 5px;
+  }
+}
+
+.info {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  width: 300px;
+}

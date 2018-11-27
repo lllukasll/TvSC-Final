@@ -6,4 +6,11 @@ export interface TvShow {
   episodeLength: number;
   emissionHour: string;
   seasons: any[];
+  isFavourite: boolean;
+  userRatingDto: {
+    story: number;
+    effects: number;
+    music: number;
+    average: number;
+  };
 }

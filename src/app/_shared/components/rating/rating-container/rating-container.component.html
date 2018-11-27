@@ -1,0 +1,14 @@
+<div *ngIf='ratingModel && ratingModel.length > 0' class="rating-container">
+    <div *ngIf='addRating' class="title">{{message}} : </div>
+
+    <div class="rating">
+
+        <app-rating *ngFor='let rating of ratingModel'
+          [ratingName]='rating.name'
+          [initialStarValue]='rating.value'
+          (starsClicked)='rating.value = $event'
+        ></app-rating>
+
+        <button *ngIf='addRating' (click)='onSubmit()' class="submit-btn">{{buttonContent}}</button>
+    </div>
+  </div>

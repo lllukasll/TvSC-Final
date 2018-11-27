@@ -7,6 +7,7 @@
   top: 0;
   z-index: 0;
   overflow-x: hidden;
+  font-family: 'PT Sans', sans-serif;
 
   .background-photo {
     height: 1000px;
@@ -19,33 +20,69 @@
     -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
   }
+}
 
-  .content {
-    margin-top: 50px;
+.content {
+  margin-top: 50px;
+  font-family: 'PT Sans', sans-serif;
 
-    .info-tab {
-      position: relative;
+  .info-tab {
+    position: relative;
 
-      .favourite {
-        position: absolute;
-        bottom: 10px;
-        left: 340px;
+    .favourite {
+      position: absolute;
+      bottom: 10px;
+      left: 340px;
+      transition: 0.5s;
+      cursor: pointer;
+
+      &:hover {
+        color: rgba(241, 90, 90, 0.452);
       }
 
-      .next {
-        position: absolute;
-        bottom: 10px;
-        right: 50px;
+      i {
+        margin-right: 10px;
+      }
+    }
+
+    .next {
+      position: absolute;
+      bottom: 10px;
+      right: 100px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.664);
+
+      .text {
+        margin-bottom: 5px;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+
+      .timer {
+        font-size: 1.5rem;
+        font-weight: 600;
+
+        .number {
+          padding: 5px 10px;
+          margin-right: 5px;
+          margin-left: 5px;
+          color: rgba(255, 255, 255, 0.664);
+          background-color: rgba(199, 199, 199, 0.24);
+          border-radius: 5px;
+        }
+      }
+
+      .info {
+        margin-top: 10px;
+        font-size: 0.8rem;
+        width: 300px;
       }
     }
   }
 
-
-
   .content-container {
     position: relative;
     margin: 20px;
-    font-family: 'PT Sans', sans-serif;
     width: 100%;
 
     .seasons {
@@ -63,17 +100,15 @@
       width: 40%;
     }
   }
-}
+  }
 
-.details-container {
+  .details-container {
   margin: 20px;
   position: relative;
   width: 100%;
-  font-family: 'PT Sans', sans-serif;
 
   .banner {
     display: inline-block;
-    font-family: 'PT Sans', sans-serif;
     position: relative;
     width: 300px;
     height: 450px;
@@ -96,6 +131,7 @@
     width: 80%;
 
     .details {
+      float: left;
       width: 80%;
       padding-right: 10%;
 
@@ -151,6 +187,10 @@
         .thriller{
           background: #C54246;
         }
+
+        .criminal{
+          background: #ffa500;
+        }
       }
 
       .description {
@@ -161,10 +201,14 @@
 
     .rating {
       float: right;
+      margin-top: 20px;
       width: 20%;
     }
   }
 }
+
+
+
 
 
 

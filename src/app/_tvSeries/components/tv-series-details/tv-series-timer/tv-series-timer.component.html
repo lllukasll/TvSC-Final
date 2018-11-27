@@ -1,0 +1,5 @@
+<ng-container *ngIf='episode'>
+  <div class="text">Następny odcinek za : </div>
+  <span class="timer"><span class="number">{{days >= 10 ? days : '0' + days }}</span>:<span class="number">{{hours >= 10 ? hours : '0' + hours }}</span>:<span class="number">{{minutes >= 10 ? minutes : '0' + minutes }}</span>:<span class="number">{{seconds >= 10 ? seconds : '0' + seconds }}</span></span>
+  <div class="info">{{info}}</div>
+</ng-container>

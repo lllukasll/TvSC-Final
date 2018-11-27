@@ -2,7 +2,6 @@
   <a [routerLink]="['/welcome']" routerLinkActive="router-link-active"  class="active">TvSC</a>
   <a [routerLink]="['/calendar']" >Kalendarz</a>
   <a [routerLink]="['/tvSeries']" >Lista seriali</a>
-  <a (click)='addNotificationTmp()'>dodajNotyfikacje</a>
 
   <div style="float: right" *ngIf='!isAuthenticated$'>
     <a (click)='toogleLoginForm()'>Zaloguj się</a>
@@ -10,7 +9,7 @@
   </div>
 
   <div style="float: right" *ngIf='isAuthenticated$'>
-    <a>{{loggedUser$.userName}}</a>
+    <a routerLink='/user/{{loggedUser$.userName}}' >{{loggedUser$.userName}}</a>
     <a (click)='onLogoutClicked()'>Wyloguj się</a>
   </div>
 
@@ -40,7 +39,7 @@
     [isDoingRequest]='isloading$'
   ></app-form>
   <div class="change-form">
-    <div class="question">Nie masz jeszcze konta ?</div> <div class="move-link">Zarejestruj się</div>
+    <div class="question">Nie masz jeszcze konta ?</div> <div (click)='toogleRegisterForm()' class="move-link">Zarejestruj się</div>
   </div>
   <div class="login-error">
     <span *ngIf='loginErrors$ !== null' class='errors'>{{loginErrors$}}</span>
@@ -68,6 +67,6 @@
     [isDoingRequest]='isloading$'
   ></app-form>
   <div class="change-form">
-    <div class="question">Masz już konto ?</div> <div class="move-link">Zaloguj się</div>
+    <div class="question">Masz już konto ?</div> <div (click)='toogleLoginForm()' class="move-link">Zaloguj się</div>
   </div>
 </app-modal>

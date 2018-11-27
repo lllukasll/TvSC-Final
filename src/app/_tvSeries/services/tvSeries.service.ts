@@ -18,7 +18,7 @@ export class TvSeriesService {
 
   getOne(tvSeriesId): Observable<any> {
     const url = `${this.BASE_URL}/tvShow/${tvSeriesId}`;
-    return this.http.get(url);
+    return this.http.get(url, { withCredentials: true });
   }
 
   getCurrentMonthEpisodes(monthNumber): Observable<any> {
@@ -34,5 +34,30 @@ export class TvSeriesService {
     console.log(dates)
     const url = `${this.BASE_URL}/Calendar/week`;
     return this.http.post<any>(url, dates);
+  }
+
+  addToFavourite(tvSeriesId): Observable<any> {
+    const url = `${this.BASE_URL}/tvShows/favourite/${tvSeriesId}`;
+    return this.http.post(url, null, { withCredentials: true });
+  }
+
+  removeFromFavourites(tvSeriesId): Observable<any> {
+    const url = `${this.BASE_URL}/tvShows/favourite/${tvSeriesId}`;
+    return this.http.delete(url, { withCredentials: true });
+  }
+
+  addTvSeriesRating(tvSeriesId, ratingModel): Observable<any> {
+    const url = `${this.BASE_URL}/rating/tvSeries/${tvSeriesId}`;
+    return this.http.post(url, ratingModel, { withCredentials: true });
+  }
+
+  updateTvSeriesRating(ratingId, ratingModel): Observable<any> {
+    const url = `${this.BASE_URL}/rating/${ratingId}`;
+    return this.http.put(url, ratingModel, { withCredentials: true });
+  }
+
+  getTvSeriesClosestEpisode(tvSeriesId): Observable<any> {
+    const url = `${this.BASE_URL}/closest/${tvSeriesId}`;
+    return this.http.get(url);
   }
 }

@@ -1,14 +1,15 @@
 <div class="bg" >
   <img class="background-photo" src="http://localhost:50388/tvShow/photo/{{currentTvShow$ && currentTvShow$.backgroundPhotoName}}" />
+</div>
 
-  <div class="content">
+<div class="content">
     <div class="row info-tab">
       <div class="details-container">
         <div class="banner">
           <img src='http://localhost:50388/tvShow/photo/{{currentTvShow$ && currentTvShow$.photoName}}'  />
         </div>
         <div class="details-informations">
-          <div class="details">
+          <span class="details">
             <div class="title">
               {{currentTvShow$ && currentTvShow$.name}}
             </div>
@@ -29,20 +30,32 @@
             <div class="description">
                 {{currentTvShow$ && currentTvShow$.longDescription}}
             </div>
-          </div>
+          </span>
 
-          <div class="rating">
-              <app-tv-series-details-rating></app-tv-series-details-rating>
-          </div>
+          <span class="rating">
+            <app-rating-container
+              [addRating]='true'
+              [ratingModel]='ratingModel'
+              [message]='currentTvShow$ && currentTvShow$.userRatingDto ? "Edytuj ocenę" : "Dodaj ocenę" '
+              [buttonContent]='currentTvShow$ && currentTvShow$.userRatingDto ? "Edytuj ocenę" : "Dodaj ocenę" '
+              (sendRating)='currentTvShow$ && currentTvShow$.userRatingDto ? updateRating($event) : addRating($event)'
+            ></app-rating-container>
+          </span>
         </div>
       </div>
 
-      <div class="favourite">
-        <i class="fa fa-heart"></i> Dodaj do ulubionych
+      <div class="favourite" (click)='addToFavouriteClick()' title='Kliknij aby dodać serial do ulubionych' *ngIf='currentTvShow$ && !currentTvShow$.isFavourite'>
+        <i class="fa fa-heart"></i>Dodaj do ulubionych
+      </div>
+
+      <div class="favourite" (click)='removeFromFavouritesClick()' title='Kliknij aby przestać obserwować ten serial' *ngIf='currentTvShow$ && currentTvShow$.isFavourite'>
+        <i class="fa fa-heart"></i>Lubisz ten serial
       </div>
 
       <div class="next">
-        <i class="fa fa-clock"></i> Następny odcinek za : 20 dni 10h:45m
+        <app-tv-series-timer *ngIf='closestEpisode$'
+          [episode]='closestEpisode$ && closestEpisode$'
+        ></app-tv-series-timer>
       </div>
 
     </div>
@@ -62,6 +75,3 @@
       </div>
     </div>
   </div>
-
-</div>
-

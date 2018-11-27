@@ -21,6 +21,9 @@ import {
 import {
     CloseModal
   } from '../../_shared/actions/modal';
+import {
+  NotificationAdded
+} from '../../_shared/actions/notification';
 import { Router } from '@angular/router';
 import { ErrorModel } from '../../models/errorModel';
 import { DataService } from '../../services/data.service';
@@ -93,8 +96,12 @@ export class AuthEffects  {
   @Effect()
   LogInSuccess: Observable<any> = this.actions
     .ofType(AuthActionTypes.LOGIN_SUCCESS)
-    .pipe(map(() => new CloseModal())
-  );
+    .pipe(
+      switchMap(() => [
+        new NotificationAdded('Pomyślnie zalogowano'),
+        new CloseModal()
+      ])
+    );
 
   @Effect({ dispatch: false })
   LogInFailure: Observable<any> = this.actions.pipe(
@@ -145,7 +152,11 @@ export class AuthEffects  {
   @Effect()
   SignUpSuccess: Observable<any> = this.actions
     .ofType(AuthActionTypes.SIGNUP_SUCCESS)
-    .pipe(map(() => new CloseModal())
+    .pipe(
+      switchMap(() => [
+        new NotificationAdded('Pomyślnie zarejestrowano. Możesz się zalogować'),
+        new CloseModal()
+      ])
   );
 
   @Effect({dispatch: false})

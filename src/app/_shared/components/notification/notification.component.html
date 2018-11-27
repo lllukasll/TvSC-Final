@@ -1,3 +1,4 @@
-<div [ngClass]="{removing: removing, fadeIn: !removing}" (click)='onClick(notification.id)' class="notification">
+<div [ngClass]="{removing: removing, fadeIn: !removing}" (mouseover)='onMouseOver()' (mouseout)='onMouseOut()' (click)='onClick(notification.id)' class="notification">
   <div class="text">{{notification.content}}</div>
+  <div class="progress-bar-container"><div class="progress" [style.width.%]='width'></div></div>
 </div>

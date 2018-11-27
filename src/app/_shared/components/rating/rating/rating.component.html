@@ -1,0 +1,17 @@
+<div class="rating-portion">
+  <div class="name">{{ratingName}} : </div>
+  <div class="content">
+    <i
+      [ngClass]="{'fa-star checked': star1Hover || star1Clicked, 'fa-star-o': !star1Hover && !star1Clicked,'unhover': !star1Hover && star1Clicked}"
+      class="fa"
+      (click)='onStarClicked(1)'
+      (mouseenter)='onMouseOverStar(1)'
+      (mouseleave)='onMouseOutStar()'
+      aria-hidden="true"></i>
+    <i [ngClass]="{'fa-star checked': star2Hover || star2Clicked, 'fa-star-o': !star2Hover && !star2Clicked,'unhover': !star2Hover && star2Clicked}" class="fa" (click)='onStarClicked(2)' (mouseenter)='onMouseOverStar(2)' (mouseleave)='onMouseOutStar()' aria-hidden="true"></i>
+    <i [ngClass]="{'fa-star checked': star3Hover || star3Clicked, 'fa-star-o': !star3Hover && !star3Clicked,'unhover': !star3Hover && star3Clicked}" class="fa" (click)='onStarClicked(3)' (mouseenter)='onMouseOverStar(3)' (mouseleave)='onMouseOutStar()' aria-hidden="true"></i>
+    <i [ngClass]="{'fa-star checked': star4Hover || star4Clicked, 'fa-star-o': !star4Hover && !star4Clicked,'unhover': !star4Hover && star4Clicked}" class="fa" (click)='onStarClicked(4)' (mouseenter)='onMouseOverStar(4)' (mouseleave)='onMouseOutStar()' aria-hidden="true"></i>
+    <i [ngClass]="{'fa-star checked': star5Hover || star5Clicked, 'fa-star-o': !star5Hover && !star5Clicked,'unhover': !star5Hover && star5Clicked}" class="fa" (click)='onStarClicked(5)' (mouseenter)='onMouseOverStar(5)' (mouseleave)='onMouseOutStar()' aria-hidden="true"></i>
+    <span>{{starsValue}}/5</span>
+  </div>
+</div>

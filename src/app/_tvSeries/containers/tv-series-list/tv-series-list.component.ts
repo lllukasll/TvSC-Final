@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import * as tvShowsActions from '../../actions/tvSeries.actions';
@@ -12,7 +12,7 @@ import { TvShow } from '../../models/tvShow';
   templateUrl: './tv-series-list.component.html',
   styleUrls: ['./tv-series-list.component.scss']
 })
-export class TvSeriesListComponent implements OnInit {
+export class TvSeriesListComponent implements OnInit, OnDestroy {
 
   url: 'http://localhost:50388';
   tvShows$: any[];
@@ -24,6 +24,8 @@ export class TvSeriesListComponent implements OnInit {
     pageSize: number,
     status: number
   };
+
+  private subscription: any;
 
   constructor(private store: Store<fromTvSeries.State>) {
     this.parameters = {
@@ -52,8 +54,12 @@ export class TvSeriesListComponent implements OnInit {
   ngOnInit() {
     this.loading = this.store.pipe(select(isSpinnerShowing));
     this.store.dispatch(new tvShowsActions.LoadTvShowsAction(this.parameters));
-    this.store.pipe(select(fromTvSeries.getTvSeries)).subscribe(
+    this.subscription = this.store.pipe(select(fromTvSeries.getTvSeries)).subscribe(
       tvShows => { this.tvShows$ = tvShows; console.log(tvShows); }
     );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

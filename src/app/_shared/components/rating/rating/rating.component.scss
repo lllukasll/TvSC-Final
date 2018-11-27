@@ -1,0 +1,40 @@
+.rating-portion {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+
+  .name {
+    width: 30%;
+  }
+
+  .content {
+    width: 70%;
+
+    .fa {
+      color: rgba(241, 177, 57, 0.842);
+      padding-right: 4px;
+    }
+
+    .fa-star {
+      transition: 0.5s;
+    }
+
+    i {
+      opacity: 0.8;
+      cursor: pointer;
+    }
+
+    .checked {
+      opacity: 1;
+    }
+
+    .unhover {
+      opacity: 0.8;
+    }
+
+  }
+
+  span {
+    padding-left: 10px;
+  }
+}

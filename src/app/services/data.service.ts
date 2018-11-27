@@ -25,4 +25,16 @@ export class DataService {
     }
     return errorsArray;
   }
+
+  getErrorAsString = errorModel => {
+    let errorToReturn: string;
+    if (errorModel) {
+      if (errorModel.status === 400) {
+        errorModel.error.errorObjects.forEach(error => {
+          errorToReturn = error;
+        });
+      }
+    }
+    return errorToReturn;
+  }
 }
