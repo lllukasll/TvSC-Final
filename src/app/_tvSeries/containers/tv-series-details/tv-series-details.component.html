@@ -62,15 +62,33 @@
     <hr style="opacity: 0.3; margin: 0px 10px;"/>
     <div class="row">
       <div class="content-container">
-        <div class="seasons">
-          <app-tv-series-details-seasons
+        <div class="info-tab">
+          <div class='change-info-btn' (click)='onChangeCategoryClick("episodes")'>Odcinki</div>
+          <div class='change-info-btn' (click)='onChangeCategoryClick("actors")'>Aktorzy</div>
+          <div class='change-info-btn' (click)='onChangeCategoryClick("gallery")'>Galeria</div>
+          <div class='change-info-btn' (click)='onChangeCategoryClick("informations")'>Informacje</div>
+          <app-tv-series-details-seasons *ngIf='episodesActive'
             [seasons]='currentTvShow$ && currentTvShow$.seasons'
           ></app-tv-series-details-seasons>
-        </div>
-        <div class="cast">
-          <app-tv-series-details-cast
+          <app-tv-series-details-cast *ngIf='actorsActive'
             [cast]='currentTvShow$ && currentTvShow$.actors'
           ></app-tv-series-details-cast>
+          <app-tv-series-informations *ngIf='informationActive'
+            [name]='currentTvShow$ && currentTvShow$.name'
+            [network]='currentTvShow$ && currentTvShow$.network'
+            [categories]='currentTvShow$ && currentTvShow$.categories'
+            [emissionHour]='currentTvShow$ && currentTvShow$.emissionHour'
+            [episodeLength]='currentTvShow$ && currentTvShow$.episodeLength'
+            [description]='currentTvShow$ && currentTvShow$.longDescription'
+            [rating]='currentTvShow$ && currentTvShow$.tvSeriesRatings.average'
+          >
+          </app-tv-series-informations>
+        </div>
+        <div class="comments">
+          <div class='comments-bar'>Komentarze</div>
+          <div class='comments-box'>
+              <app-tv-series-comments></app-tv-series-comments>
+          </div>
         </div>
       </div>
     </div>

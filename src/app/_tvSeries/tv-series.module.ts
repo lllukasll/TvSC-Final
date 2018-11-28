@@ -22,6 +22,8 @@ import { MonthCalendarComponent } from './components/tv-series-calendar/month-ca
 import { WeekCalendarComponent } from './components/tv-series-calendar/week-calendar/week-calendar.component';
 import { DayCalendarComponent } from './components/tv-series-calendar/day-calendar/day-calendar.component';
 import { TvSeriesTimerComponent } from './components/tv-series-details/tv-series-timer/tv-series-timer.component';
+import { TvSeriesCommentsComponent } from './components/tv-series-details/tv-series-comments/tv-series-comments.component';
+import { TvSeriesInformationsComponent } from './components/tv-series-details/tv-series-informations/tv-series-informations.component';
 
 const tvSeriesRoutes: Routes = [
   { path: 'tvSeries', component: TvSeriesListComponent},
@@ -51,7 +53,9 @@ const tvSeriesRoutes: Routes = [
     MonthCalendarComponent,
     WeekCalendarComponent,
     DayCalendarComponent,
-    TvSeriesTimerComponent
+    TvSeriesTimerComponent,
+    TvSeriesCommentsComponent,
+    TvSeriesInformationsComponent
   ]
 })
 export class TvSeriesModule { }

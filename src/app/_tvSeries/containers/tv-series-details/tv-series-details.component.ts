@@ -31,12 +31,39 @@ export class TvSeriesDetailsComponent implements OnInit, OnDestroy {
     value: 0
   }];
   componentActive = true;
-
   tvShowObservable$: any;
+  episodesActive = true;
+  actorsActive = false;
+  galleryActive = false;
+  informationActive = false;
 
   constructor(private store: Store<fromTvSeries.State>, private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
+  }
+
+  onChangeCategoryClick(value: string) {
+    if (value === 'episodes') {
+      this.episodesActive = true;
+      this.actorsActive = false;
+      this.galleryActive = false;
+      this.informationActive = false;
+    } else if (value === 'actors') {
+      this.episodesActive = false;
+      this.actorsActive = true;
+      this.galleryActive = false;
+      this.informationActive = false;
+    } else if (value === 'gallery') {
+      this.episodesActive = false;
+      this.actorsActive = false;
+      this.galleryActive = true;
+      this.informationActive = false;
+    } else if (value === 'informations') {
+      this.episodesActive = false;
+      this.actorsActive = false;
+      this.galleryActive = false;
+      this.informationActive = true;
+    }
   }
 
   addToFavouriteClick() {

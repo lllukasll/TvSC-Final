@@ -1,9 +1,9 @@
 <div class="actor-container" *ngFor='let actor of cast'>
-  <div class="grad"></div>
   <div class="actor-picture">
-    <img src="http://localhost:50388/Actor/photo/{{actor.photo}}" />
+    <img src="http://localhost:50388/Actor/photo/{{actor.actorDto.photo}}" />
   </div>
   <div class="actor-name">
-    <span>{{actor.name}} {{actor.surname}}</span>
+    <span>{{actor.actorDto.name}} {{actor.actorDto.surname}}</span>
+    <div class='character'>{{actor.characterName}}</div>
   </div>
 </div>

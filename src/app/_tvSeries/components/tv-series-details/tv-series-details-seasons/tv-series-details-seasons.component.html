@@ -3,22 +3,16 @@
     <div class="name">
       {{season.seasonNumber}}. Sezon {{season.seasonNumber}}
     </div>
-    <div class="switch-container">
-      <div class="switch">
-        <div class="on">
-        </div>
-      </div>
+    <div class="switch-container off">
+      <i class="fa fa-eye-slash" title='Oznacz sezon jako obejrzany'></i>
     </div>
   </div>
   <div class="episode" *ngFor='let episode of season.episodes'>
     <div class="name">
         {{episode.episodeNumber}}. {{episode.episodeName}}
       </div>
-      <div class="switch-container">
-        <div class="switch">
-          <div class="on">
-          </div>
-        </div>
+      <div class="switch-container on">
+        <i class="fa fa-eye" title='Oznacz odcinek jako obejrzany'></i>
       </div>
   </div>
 </div>

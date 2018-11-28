@@ -1,0 +1,24 @@
+.category-holder {
+  padding: 10px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.103);
+
+  .category-container {
+    width: 100%;
+    margin-bottom: 5px;
+
+    .category-name {
+      font-weight: 500;
+      font-size: 1.1rem;
+      opacity: 0.8;
+      display: inline-block;
+    }
+
+    .category-content {
+      margin-left: 10px;
+      font-size: 1rem;
+      display: inline-block;
+    }
+  }
+}
+

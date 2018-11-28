@@ -5,12 +5,13 @@ import { NotificationContainerComponent } from './containers/notification-contai
 import { NotificationComponent } from './components/notification/notification.component';
 import { RatingContainerComponent } from './components/rating/rating-container/rating-container.component';
 import { RatingComponent } from './components/rating/rating/rating.component';
+import { CircleLoaderComponent } from './components/circle-loader/circle-loader.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [SpinnerComponent, NotificationContainerComponent, NotificationComponent, RatingContainerComponent, RatingComponent],
-  exports: [SpinnerComponent, NotificationContainerComponent, RatingContainerComponent]
+  declarations: [SpinnerComponent, NotificationContainerComponent, NotificationComponent, RatingContainerComponent, RatingComponent, CircleLoaderComponent],
+  exports: [SpinnerComponent, NotificationContainerComponent, RatingContainerComponent, CircleLoaderComponent]
 })
 export class SharedModule { }

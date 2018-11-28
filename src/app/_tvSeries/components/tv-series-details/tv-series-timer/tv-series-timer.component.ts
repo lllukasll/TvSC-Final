@@ -28,14 +28,20 @@ export class TvSeriesTimerComponent implements OnInit, OnChanges, OnDestroy {
   generateInfo(days: number, hours: number, minutes: number, seconds: number) {
     let info = '';
 
-    info += days.toString();
+    if (days !== 0) {
+      info += days.toString();
+    }
+
     if (this.days === 1) {
       info += ' dzień, ';
     } else {
       this.info += ' dni, ';
     }
 
-    info += hours.toString();
+    if (hours !== 0) {
+      info += hours.toString();
+    }
+
     if (this.hours === 1) {
       info += ' godzinę, ';
     } else if ((this.hours > 20 || this.hours < 10) && (this.hours % 10 === 2 || this.hours % 10 === 3 || this.hours % 10 === 4)) {
@@ -44,7 +50,10 @@ export class TvSeriesTimerComponent implements OnInit, OnChanges, OnDestroy {
       info += ' godzin, ';
     }
 
-    info += minutes.toString();
+    if (minutes !== 0) {
+      info += minutes.toString();
+    }
+
     if (this.minutes === 1) {
       info += ' minutę, ';
     } else if ((this.minutes > 20 || this.minutes < 10) && (this.minutes % 10 === 2 || this.minutes % 10 === 3 || this.minutes % 10 === 4)) {
@@ -53,7 +62,10 @@ export class TvSeriesTimerComponent implements OnInit, OnChanges, OnDestroy {
       info += ' minut, ';
     }
 
-    info += seconds.toString();
+    if (seconds !== 0) {
+      info += seconds.toString();
+    }
+
     if (this.seconds === 1) {
       info += ' sekundę';
     } else if ((this.seconds > 20 || this.seconds < 10) && (this.seconds % 10 === 2 || this.seconds % 10 === 3 || this.seconds % 10 === 4)) {

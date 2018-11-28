@@ -1,0 +1,36 @@
+<div class='category-holder'>
+  <div class='category-container'>
+    <div class='category-name'>Nazwa : </div>
+    <div class='category-content'>{{name}}</div>
+  </div>
+
+  <div class='category-container'>
+    <div class='category-name'>Stacja : </div>
+    <div class='category-content'>{{network}}</div>
+  </div>
+
+  <div class='category-container'>
+    <div class='category-name'>Kateogrie : </div>
+    <div class='category-content'><span *ngFor='let category of categories'>{{category.name}}, </span></div>
+  </div>
+
+  <div class='category-container'>
+    <div class='category-name'>Godzina emisji : </div>
+    <div class='category-content'>{{emissionHour}}</div>
+  </div>
+
+  <div class='category-container'>
+    <div class='category-name'>Długość odcinków : </div>
+    <div class='category-content'>{{episodeLength}}</div>
+  </div>
+
+  <div class='category-container'>
+    <div class='category-name'>Opis : </div>
+    <div class='category-content'>{{description}}</div>
+  </div>
+
+  <div class='category-container'>
+    <div class='category-name'>Ocena : </div>
+    <div class='category-content'>{{rating}}/5</div>
+  </div>
+</div>
