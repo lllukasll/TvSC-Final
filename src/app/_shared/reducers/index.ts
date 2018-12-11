@@ -33,3 +33,18 @@ export const isRegisterModalOpened = createSelector(
   selectModalEntity,
   fromModal.registerModalOpened
 );
+
+export const isCommentModalOpened = createSelector(
+  selectModalEntity,
+  fromModal.commentModalOpened
+);
+
+export const isConfirmModalOpened = createSelector(
+  selectModalEntity,
+  fromModal.confirmModalOpened
+);
+
+export const isChangePasswordModalOpened = createSelector(
+  selectModalEntity,
+  fromModal.changePasswordModalOpened
+);

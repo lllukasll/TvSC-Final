@@ -6,12 +6,18 @@ import { NotificationComponent } from './components/notification/notification.co
 import { RatingContainerComponent } from './components/rating/rating-container/rating-container.component';
 import { RatingComponent } from './components/rating/rating/rating.component';
 import { CircleLoaderComponent } from './components/circle-loader/circle-loader.component';
-
+import { ModalComponent } from './components/modal/modal.component';
+import { FormComponent } from './components/form/form.component';
+import { TvSeriesCardComponent } from './components/tv-series-card/tv-series-list-card.component';
+import { SliderComponent } from './components/slider/slider.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
-  declarations: [SpinnerComponent, NotificationContainerComponent, NotificationComponent, RatingContainerComponent, RatingComponent, CircleLoaderComponent],
-  exports: [SpinnerComponent, NotificationContainerComponent, RatingContainerComponent, CircleLoaderComponent]
+  // tslint:disable-next-line:max-line-length
+  declarations: [SpinnerComponent, FormComponent, TvSeriesCardComponent, NotificationContainerComponent, NotificationComponent, RatingContainerComponent, RatingComponent, CircleLoaderComponent, ModalComponent, SliderComponent],
+  exports: [SpinnerComponent, FormComponent, TvSeriesCardComponent, NotificationContainerComponent, RatingContainerComponent, CircleLoaderComponent, ModalComponent, SliderComponent]
 })
 export class SharedModule { }

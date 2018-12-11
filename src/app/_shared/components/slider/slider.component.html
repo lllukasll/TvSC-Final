@@ -1,0 +1,25 @@
+<div class='slider-container' [style.height.px]='height'>
+  <div class='title'>{{sliderTitle}}</div>
+  <div class='previous-arrow' (click)='scrollToLeft()'><i class="fa fa-chevron-left"></i></div>
+
+  <div class='tv-shows-container'>
+    <div #tvShowsHolder0 class='tv-shows-holder'>
+      <app-tv-series-card
+        [height]='height - 60'
+        [width]='(height - 60) * 0.8'
+        *ngFor='let tvSeries of sliderElements'
+        [id]='tvSeries.id && tvSeries.id'
+        [name]='tvSeries.name && tvSeries.name'
+        [station]='tvSeries.network && tvSeries.network'
+        [description]='tvSeries.description && tvSeries.description'
+        [cast]='tvSeries.cast && tvSeries.cast'
+        [tags]='tvSeries.tags && tvSeries.tags'
+        [episodeName]='tvSeries.episodeName && tvSeries.episodeName'
+        [img]='tvSeries.photoName && tvSeries.photoName'
+        [showDescription]='showDescription'>
+      </app-tv-series-card>
+    </div>
+  </div>
+
+  <div class='next-arrow' (click)='scrollToRight()'><i class="fa fa-chevron-right"></i></div>
+</div>

@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import { CalendarDate } from '../../../models/calendarDate';
 import { Observable } from 'rxjs';
 import * as fromTvSeries from '../../../reducers/tvSeries.reducer';
+import * as fromTvSeriesModule from '../../../reducers';
 import { isSpinnerShowing } from '../../../../_shared/reducers/index';
 import { Store, select } from '@ngrx/store';
 import * as tvShowsActions from '../../../actions/tvSeries.actions';
@@ -20,7 +21,7 @@ export class MonthCalendarComponent implements OnInit {
   loading: Observable<boolean>;
   currentMonthEpisodes$: ICalendarEpisode[];
 
-  constructor(private store: Store<fromTvSeries.State>) {
+  constructor(private store: Store<fromTvSeriesModule.State>) {
     this.generateCalendar();
   }
 
@@ -83,7 +84,7 @@ export class MonthCalendarComponent implements OnInit {
   ngOnInit() {
     this.loading = this.store.pipe(select(isSpinnerShowing));
     this.store.dispatch(new tvShowsActions.GetCurrentMonthEpisodesAction(this.currentDate.month() + 1));
-    this.store.pipe(select(fromTvSeries.getCurrentMonthEpisodes)).subscribe(
+    this.store.pipe(select(fromTvSeriesModule.getCurrentMonthEpisodes)).subscribe(
       episodes => { this.currentMonthEpisodes$ = episodes; }
     );
   }

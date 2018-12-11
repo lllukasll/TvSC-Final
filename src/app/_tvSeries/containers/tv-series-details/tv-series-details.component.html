@@ -80,16 +80,59 @@
             [emissionHour]='currentTvShow$ && currentTvShow$.emissionHour'
             [episodeLength]='currentTvShow$ && currentTvShow$.episodeLength'
             [description]='currentTvShow$ && currentTvShow$.longDescription'
-            [rating]='currentTvShow$ && currentTvShow$.tvSeriesRatings.average'
+            [rating]='currentTvShow$ && currentTvShow$.tvSeriesRatings && currentTvShow$.tvSeriesRatings.average'
           >
           </app-tv-series-informations>
         </div>
         <div class="comments">
-          <div class='comments-bar'>Komentarze</div>
+          <div class='comments-bar'>Komentarze<span class='add-comment' (click)='toogleAddComment()'>Dodaj komentarz</span></div>
+          <div class='loader' *ngIf='loadingComments'>
+              <app-circle-loader
+                [text]='"Ładowanie komentarzy"'
+              ></app-circle-loader>
+            </div>
           <div class='comments-box'>
-              <app-tv-series-comments></app-tv-series-comments>
+              <app-tv-series-comments
+                (editClicked)='onEditClicked($event)'
+                (deleteClicked)='onDeleteCommentClicked($event)'
+              ></app-tv-series-comments>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+<app-modal
+  [width]='600'
+  [height]='addCommentError !== null ? 390 : 380'
+  [border_radius]='"15px"'
+  [opened]='addCommentOpened'
+  (closed)='toogleAddComment()'
+>
+  <div class="comment-title">
+    {{editingCommentState ? "Edytuj komentarz" : "Dodaj komentarz"}}
+  </div>
+
+  <app-form
+    [formSettings]='commentFormSettings'
+    [submitBtnName]='editingCommentState ? "Edytuj komentarz" : "Dodaj komentarz"'
+    [submitFunction]='editingCommentState ? onEditCommentSubmit : submitAddComment'
+    [isDoingRequest]='false'
+  ></app-form>
+
+  <div class="login-error">
+    <span *ngIf='addCommentError !== null' class='errors'>{{addCommentError}}</span>
+    <span *ngIf='editingCommentState && editCommentError !== null' class='errors'>{{editCommentError}}</span>
+  </div>
+</app-modal>
+
+<app-modal
+  [width]='400'
+  [height]='200'
+  [border_radius]='"15px"'
+  [opened]='deleteCommentState'
+  (closed)='toogleDeleteComment()'
+>
+  <div class='question'>Czy na pewno chcesz usunąć komentarz ? </div>
+  <div class='confirm-container'><div class='confirm-btn' (click)='onDeleteCommentSubmit()'>Tak</div><div class='confirm-btn' (click)='toogleDeleteComment()'>Nie</div></div>
+</app-modal>

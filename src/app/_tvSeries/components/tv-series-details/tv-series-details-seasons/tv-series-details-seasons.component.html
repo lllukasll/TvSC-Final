@@ -1,18 +1,31 @@
-<div class="seasons" *ngFor='let season of seasons'>
-  <div class="season">
-    <div class="name">
-      {{season.seasonNumber}}. Sezon {{season.seasonNumber}}
+<ng-container *ngIf='!loading'>
+  <div class="seasons" *ngFor='let season of episodesArray'>
+    <div class="season">
+      <div class="name">
+        {{season.seasonNumber}}. Sezon {{season.seasonNumber}}
+      </div>
+      <div *ngIf='season.watched' class="switch-container">
+          <i class="fa fa-eye on" title='Oznacz sezon jako nie obejrzany' (click)='removeWatchedSeason(season.id)'></i>
+        </div>
+      <div *ngIf='!season.watched' class="switch-container">
+        <i class="fa fa-eye-slash off" title='Oznacz sezon jako obejrzany' (click)='addSeasonToWatched(season.id)'></i>
+      </div>
     </div>
-    <div class="switch-container off">
-      <i class="fa fa-eye-slash" title='Oznacz sezon jako obejrzany'></i>
+    <div class="episode" *ngFor='let episode of season.episodes'>
+      <div class="name">
+          {{episode.episodeNumber}}. {{episode.episodeName}}
+        </div>
+        <div *ngIf='episode.watched' class="switch-container">
+          <i class="fa fa-eye on" title='Oznacz odcinek jako nie obejrzany' (click)='removeFromWatched(episode.id)'></i>
+        </div>
+        <div *ngIf='!episode.watched' class="switch-container ">
+          <i class="fa fa-eye-slash off" title='Oznacz odcinek jako obejrzany' (click)='addEpisodeToWatched(episode.id)'></i>
+        </div>
     </div>
   </div>
-  <div class="episode" *ngFor='let episode of season.episodes'>
-    <div class="name">
-        {{episode.episodeNumber}}. {{episode.episodeName}}
-      </div>
-      <div class="switch-container on">
-        <i class="fa fa-eye" title='Oznacz odcinek jako obejrzany'></i>
-      </div>
-  </div>
+</ng-container>
+<div *ngIf='loading'>
+  <app-circle-loader
+    [text]='"Ładowanie odcinków"'
+  ></app-circle-loader>
 </div>

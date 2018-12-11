@@ -1,0 +1,18 @@
+<div class='sidebar-container'>
+  <div class='profile-photo-wrapper'>
+    <img class='profile-photo' [src]='loggedUser && loggedUser.avatar ? "http://localhost:50388/usersPictures/" + loggedUser.avatar : "../../../../../assets/img/placeholder.png"' />
+  </div>
+  <div class='center margin-top-10'>Witaj</div>
+  <div class='center login margin-bottom-10'>{{loggedUser && loggedUser.firstName}} {{loggedUser && loggedUser.lastName}} [ {{loggedUser && loggedUser.userName}} ]</div>
+
+  <hr />
+  <div class='link' (click)='onClick("informations")'>
+    <span class='icon-wrapper'>
+      <i class="fa fa-info-circle icon"></i>
+    </span>
+    <span class='name'>Informacje</span>
+  </div>
+  <div class='link' (click)='onClick("favourite")'><i class="fa fa-tv icon"></i>Moje seriale</div>
+  <div class='link' (click)='onClick("history")'><i class="fa fa-history icon"></i>Historia</div>
+  <!-- <div class='link' (click)='onClick("settings")'><i class="fa fa-cogs icon"></i>Ustawienia</div> -->
+</div>

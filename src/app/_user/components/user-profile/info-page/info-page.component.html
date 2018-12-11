@@ -1,0 +1,104 @@
+<div class='info-page-container'>
+  <div class='profile-photo'>
+    <div class='photo-wrapper'><img [src]='url ? url : loggedUser && loggedUser.avatar ? "http://localhost:50388/usersPictures/" + loggedUser.avatar : "../../../../../assets/img/placeholder.png"' title='Avatar'/></div>
+    <input
+      style="display: none"
+      type="file" (change)="onFileChanged($event)"
+      #fileInput>
+    <div *ngIf='!url' class='upload-photo-btn' (click)="fileInput.click()">Aktualizuj avatar</div>
+    <div class='save-container' *ngIf='url'><div class='save-btn' (click)='saveAvatar()'>Zapisz</div><div class='change-btn' (click)="fileInput.click()">Zmień</div></div>
+  </div>
+  <div class='profile-info'>
+    <div class='info-line'><span>Imię : </span><span>{{loggedUser && loggedUser.firstName}}</span></div>
+    <div class='info-line'><span>Nazwisko : </span><span>{{loggedUser && loggedUser.lastName}}</span></div>
+    <div class='info-line'><span>Login : </span><span>{{loggedUser && loggedUser.userName}}</span></div>
+    <div class='info-line'><span>Email : </span><span>{{loggedUser && loggedUser.email}}</span></div>
+    <div class='info-line tags'>
+      <span>Ulubione kategorie : </span>
+      <span class='criminal'>Kryminał</span>
+      <span class='fantasy'>Fantasy</span>
+      <span class='story'>Przygodowy</span>
+      <span class='action'>Akcja</span>
+    </div>
+    <!-- <div class='change-password-btn green'>Wyślij wiadomość</div> -->
+    <div class='change-password-btn' (click)='onChangePasswordClick()'>Zmień hasło</div>
+  </div>
+
+  <div class='box hours-watched'>
+    <div class='title'>Obejrzanych godzin :</div>
+    <div class='number'><i class="fa fa-stopwatch"></i>{{stats && stats.hoursWatched}} h</div>
+    <div class='bottom'>5 w ostatnim tygodniu</div>
+  </div>
+  <div class='box episodes-watched'>
+    <div class='title'>Obejrzanych odcinków :</div>
+    <div class='number'>{{stats && stats.episodesWatched}}</div>
+    <div class='bottom'>4 w ostatnim tygodniu</div>
+  </div>
+  <div class='box tvSeries-watched'>
+    <div class='title'>Ocenionych seriali :</div>
+    <div class='number'>{{stats && stats.ratedCount}}</div>
+    <div class='bottom'>1 w ostatnim tygodniu</div>
+  </div>
+  <div class='box waitng-for'>
+    <div class='title'>Skomentowanych seriali:</div>
+    <div class='number'>{{stats && stats.commentsCount}}</div>
+    <div class='bottom'>1 dodany w ostatnim tygodniu</div>
+  </div>
+  <div class='box liked-tvSeries'>
+    <div class='title'>Polubione seriale :</div>
+    <div class='number'>{{stats && stats.likedTvSeries}} </div>
+    <div class='bottom'>5 polubionych ostatnim tygodniu</div>
+  </div>
+  <div class='box average-rating'>
+    <div class='title'>Średnia ocena :</div>
+    <div class='number'><i class="fa fa-user-clock"></i>{{stats && stats.averageRating}}</div>
+    <div class='bottom'>5 ocen dodanych w ostatnim tygodniu</div>
+  </div>
+
+  <div class='history'>
+    <div class='title'>Ostatnia aktywność :</div>
+
+    <div class='activity' *ngFor='let notification of notifications'>
+      <div class='content'>{{notification.firstPart}} {{notification.tvShowName}} {{notification.secondPart}}</div>
+      <div class='date'>{{getTime(notification)}}</div>
+    </div>
+
+  </div>
+
+  <div class='propositions'>
+    <div class='title'>Proponowane dla ciebie :</div>
+
+    <ng-container *ngIf='propositions && propositions.length > 0'>
+      <div class='tv-series-proposition' *ngFor='let proposition of propositions' routerLink='/tvSeries/{{proposition.id}}'>
+        <img [src]='"http://localhost:50388/tvShowsPictures/" + proposition.photoName' [title]='proposition.name' />
+        <div class='gradient'></div>
+        <div class='tv-series-title'>{{proposition.name}}</div>
+      </div>
+    </ng-container>
+
+  </div>
+</div>
+
+<app-modal
+  [width]='600'
+  [height]='400'
+  [border_radius]='"15px"'
+  [opened]='changePasswordModalOpened'
+  (closed)='onChangePasswordClick()'
+>
+
+  <div class="change-password-title">
+    Zmień hasło
+  </div>
+
+  <app-form
+    [formSettings]='changePasswordSettings'
+    [submitBtnName]='"Zapisz"'
+    [submitFunction]='savePassword'
+    [isDoingRequest]='false'
+  ></app-form>
+
+  <div class="change-password-error">
+    <span *ngIf='changePasswordError !== null' class='errors'>{{changePasswordError}}</span>
+  </div>
+</app-modal>

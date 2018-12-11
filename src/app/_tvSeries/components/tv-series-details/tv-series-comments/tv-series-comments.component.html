@@ -1,85 +1,20 @@
 <div class='comments-container'>
   <div class='line'><div class='circle'></div></div>
-
-  <div class='comment-container'>
+  <div class='comment-container' *ngFor='let comment of comments$'>
     <div class='avatar'><img src='../../../../../assets/img/gameOfThrones/cast1.jpg' title='avatar'></div>
     <div class='comment-content'>
       <div class='comment-title'>
-        <span class='autor'>lllukasll</span>
-        <span class='time-ago'>1h temu</span>
+        <span class='autor'>{{comment.user}}</span>
+        <span class='time-ago'>{{getTime(comment)}}</span>
         <span class='right'>
-          <i class="fa fa-heart" title='Polub ten komentarz'></i>
-          <i class="fa fa-comment" title='Odpowiedz'></i>
+          <i class="fa fa-minus-square" *ngIf='isAuthor(comment)' (click)='onDeleteClicked(comment)' title='Usuń komentarz'></i>
+          <i class="fa fa-edit" *ngIf='isAuthor(comment)' (click)='onEditClicked(comment)' title='Edytuj komentarz'></i>
+          <i class="fa fa-heart" *ngIf='!isAuthor(comment)' title='Polub ten komentarz'></i>
+          <i class="fa fa-comment" *ngIf='!isAuthor(comment)' title='Odpowiedz'></i>
         </span>
       </div>
       <div class='comment-text'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Phasellus scelerisque metus ac ex varius iaculis.
-          Morbi efficitur ligula maximus sapien fringilla, sed ultricies velit mattis.
-          Morbi volutpat porta diam eu molestie. Aliquam scelerisque nisi dui, id vehicula eros convallis et.
-          Duis sem enim, accumsan eu enim at, placerat fringilla quam.
-      </div>
-
-      <div class='comment-container'>
-        <div class='avatar'><img src='../../../../../assets/img/gameOfThrones/cast1.jpg' title='avatar'></div>
-        <div class='comment-content'>
-          <div class='comment-title'>
-            <span class='autor'>lllukasll</span>
-            <span class='time-ago'>1h temu</span>
-            <span class='right'>
-              <i class="fa fa-heart" title='Polub ten komentarz'></i>
-              <i class="fa fa-comment" title='Odpowiedz'></i>
-            </span>
-          </div>
-          <div class='comment-text'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Phasellus scelerisque metus ac ex varius iaculis.
-              Morbi efficitur ligula maximus sapien fringilla, sed ultricies velit mattis.
-              Morbi volutpat porta diam eu molestie. Aliquam scelerisque nisi dui, id vehicula eros convallis et.
-              Duis sem enim, accumsan eu enim at, placerat fringilla quam.
-          </div>
-        </div>
-      </div>
-
-      <div class='comment-container'>
-        <div class='avatar'><img src='../../../../../assets/img/gameOfThrones/cast1.jpg' title='avatar'></div>
-        <div class='comment-content'>
-          <div class='comment-title'>
-            <span class='autor'>lllukasll</span>
-            <span class='time-ago'>1h temu</span>
-            <span class='right'>
-              <i class="fa fa-heart" title='Polub ten komentarz'></i>
-              <i class="fa fa-comment" title='Odpowiedz'></i>
-            </span>
-          </div>
-          <div class='comment-text'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Phasellus scelerisque metus ac ex varius iaculis.
-              Morbi efficitur ligula maximus sapien fringilla, sed ultricies velit mattis.
-              Morbi volutpat porta diam eu molestie. Aliquam scelerisque nisi dui, id vehicula eros convallis et.
-              Duis sem enim, accumsan eu enim at, placerat fringilla quam.
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class='comment-container'>
-    <div class='avatar'><img src='../../../../../assets/img/gameOfThrones/cast2.jpg' title='avatar'></div>
-    <div class='comment-content'>
-      <div class='comment-title'>
-        <span class='autor'>lllukasll2</span>
-        <span class='time-ago'>40m temu</span>
-        <span class='right'>
-          <i class="fa fa-heart" title='Polub ten komentarz'></i>
-          <i class="fa fa-comment" title='Odpowiedz'></i>
-        </span>
-      </div>
-      <div class='comment-text'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Phasellus scelerisque metus ac ex varius iaculis.
-          Morbi efficitur ligula maximus sapien fringilla, sed ultricies velit mattis.
+          {{comment.content}}
       </div>
     </div>
   </div>

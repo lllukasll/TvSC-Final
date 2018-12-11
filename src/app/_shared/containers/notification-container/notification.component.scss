@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
 
 .notification-container {
-  position: absolute;
+  position: fixed;
   right: 0;
-  top: 100px;
   bottom: 100px;
   width: 360px;
   display: flex;
   flex-flow: column-reverse;
   align-items: flex-end;
+  z-index: 1000;
 
   .app-notification {
     width: 100%;

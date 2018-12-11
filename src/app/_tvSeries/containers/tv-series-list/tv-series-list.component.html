@@ -12,7 +12,8 @@
          <app-spinner ></app-spinner>
         </div>
         <div [ngClass]="{blur: loading | async}">
-          <app-tv-series-list-card
+          <app-tv-series-card
+              routerLink='/tvSeries/{{tvShow.id}}'
               *ngFor='let tvShow of tvShows$.tvShowsList'
               [id]='tvShow.id'
               [name]='tvShow.name'
@@ -21,7 +22,7 @@
               [cast]='tvShow.actors'
               [tags]='tvShow.categories'
               [img]='tvShow.photoName'>
-          </app-tv-series-list-card>
+          </app-tv-series-card>
         </div>
 
         <app-tv-series-list-pagination

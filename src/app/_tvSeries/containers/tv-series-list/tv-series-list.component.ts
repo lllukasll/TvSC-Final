@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import * as tvShowsActions from '../../actions/tvSeries.actions';
 import * as fromTvSeries from '../../reducers/tvSeries.reducer';
+import * as fromTvSeriesModule from '../../reducers';
 import { isSpinnerShowing } from '../../../_shared/reducers/index';
 import { State } from '../../../reducers';
 import { TvShow } from '../../models/tvShow';
@@ -27,12 +28,12 @@ export class TvSeriesListComponent implements OnInit, OnDestroy {
 
   private subscription: any;
 
-  constructor(private store: Store<fromTvSeries.State>) {
+  constructor(private store: Store<fromTvSeriesModule.State>) {
     this.parameters = {
       categories: [],
       networks: [],
       pageNumber: 1,
-      pageSize: 5,
+      pageSize: 10,
       status: 0
     };
   }
@@ -54,7 +55,7 @@ export class TvSeriesListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loading = this.store.pipe(select(isSpinnerShowing));
     this.store.dispatch(new tvShowsActions.LoadTvShowsAction(this.parameters));
-    this.subscription = this.store.pipe(select(fromTvSeries.getTvSeries)).subscribe(
+    this.subscription = this.store.pipe(select(fromTvSeriesModule.getTvSeries)).subscribe(
       tvShows => { this.tvShows$ = tvShows; console.log(tvShows); }
     );
   }

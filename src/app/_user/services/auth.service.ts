@@ -31,4 +31,17 @@ export class AuthService {
     const url = `${this.BASE_URL}/account/logout`;
     return this.http.post<any>(url, null, { withCredentials: true });
   }
+
+  updateAvatar(avatarModel): Observable<any> {
+    const uploadData = new FormData();
+    uploadData.append('avatar', avatarModel.avatar);
+
+    const url = `${this.BASE_URL}/account/updateAvatar`;
+    return this.http.put<any>(url, uploadData, { withCredentials: true});
+  }
+
+  changePassword(changePasswordModel): Observable<any> {
+    const url = `${this.BASE_URL}/account/changePassword`;
+    return this.http.post<any>(url, changePasswordModel, { withCredentials: true });
+  }
 }

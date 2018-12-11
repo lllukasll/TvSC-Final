@@ -17,7 +17,12 @@ import {
   LogoutFailure,
   GetUserByCookie,
   GetUserByCookieSuccess,
-  GetUserByCookieFailure } from '../actions/auth.actions';
+  GetUserByCookieFailure,
+  UpdateAvatar,
+  UpdateAvatarSuccess,
+  ChangePassword,
+  ChangePasswordSuccess,
+  ChangePasswordFailure} from '../actions/auth.actions';
 import {
     CloseModal
   } from '../../_shared/actions/modal';
@@ -186,6 +191,42 @@ export class AuthEffects  {
   @Effect({ dispatch: false })
   LogoutFailure: Observable<any> = this.actions.pipe(
     ofType(AuthActionTypes.LOGOUT_FAILURE)
+  );
+
+  @Effect()
+  UpdateAvatar: Observable<any> = this.actions.pipe(
+    ofType(AuthActionTypes.UPDATE_AVATAR),
+    map((action: UpdateAvatar) => action),
+    switchMap(action => {
+      return this.authService.updateAvatar(action.avatar).pipe(
+        switchMap(() => [
+          new UpdateAvatarSuccess(),
+          new NotificationAdded('Pomyślnie zaktualizowano avatar'),
+          new GetUserByCookie()
+        ]),
+        catchError((error) => [
+          new NotificationAdded(this.dataService.getErrorAsString(error))
+        ])
+      );
+    })
+  );
+
+  @Effect()
+  ChangePassword: Observable<any> = this.actions.pipe(
+    ofType(AuthActionTypes.CHANGE_PASSWORD),
+    map((action: ChangePassword) => action),
+    switchMap(action => {
+      return this.authService.changePassword(action.payload).pipe(
+        switchMap(() => [
+          new ChangePasswordSuccess(),
+          new NotificationAdded('Pomyślnie zaktualizowano hasło'),
+          new CloseModal()
+        ]),
+        catchError((error) => [
+          new ChangePasswordFailure(this.dataService.getErrors(error))
+        ])
+      );
+    })
   );
 
 }

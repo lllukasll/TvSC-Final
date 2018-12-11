@@ -24,6 +24,10 @@ import { DayCalendarComponent } from './components/tv-series-calendar/day-calend
 import { TvSeriesTimerComponent } from './components/tv-series-details/tv-series-timer/tv-series-timer.component';
 import { TvSeriesCommentsComponent } from './components/tv-series-details/tv-series-comments/tv-series-comments.component';
 import { TvSeriesInformationsComponent } from './components/tv-series-details/tv-series-informations/tv-series-informations.component';
+import { EpisodesEffect } from './effects/episodes.effects';
+
+import { reducers } from './reducers';
+import { CommentsEffect } from './effects/comments.effects';
 
 const tvSeriesRoutes: Routes = [
   { path: 'tvSeries', component: TvSeriesListComponent},
@@ -35,8 +39,8 @@ const tvSeriesRoutes: Routes = [
   imports: [
     CommonModule,
     SharedModule,
-    StoreModule.forFeature('tvSeries', fromTvSeries.reducer),
-    EffectsModule.forFeature([TvSeriesEffect]),
+    StoreModule.forFeature('tvSeriesModule', reducers),
+    EffectsModule.forFeature([TvSeriesEffect, EpisodesEffect, CommentsEffect]),
     RouterModule.forChild(tvSeriesRoutes)
   ],
   declarations: [

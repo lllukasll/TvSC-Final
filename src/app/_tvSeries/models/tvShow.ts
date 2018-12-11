@@ -5,7 +5,19 @@ export interface TvShow {
   network: string;
   episodeLength: number;
   emissionHour: string;
-  seasons: any[];
+  seasons: [
+    {
+      id: number;
+      seasonNumber: number;
+      episodes: [{
+        id: number;
+        episodeNumber: number;
+        episodeName: string;
+        airingDate: string;
+        watched:  boolean;
+      }]
+    }
+  ];
   isFavourite: boolean;
   userRatingDto: {
     story: number;

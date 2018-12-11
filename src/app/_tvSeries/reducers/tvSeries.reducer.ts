@@ -5,10 +5,6 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ICalendarEpisode } from '../models/calendarEpisode';
 import { IEpisode } from '../models/episode';
 
-export interface State extends fromRoot.State {
-  tvSeries: TvSeriesState;
-}
-
 export interface TvSeriesState {
   tvShows: TvShow[];
   currentTvShow: TvShow;
@@ -27,57 +23,36 @@ const initialState: TvSeriesState = {
   isLoading: false
 };
 
-const getTvSeriesState = createFeatureSelector<TvSeriesState>('tvSeries');
+export const getTvSeries = (state: TvSeriesState) => state.tvShows;
+export const getCurrentTvSeries = (state: TvSeriesState) => state.currentTvShow;
+export const getCurrentMonthEpisodes = (state: TvSeriesState) => state.currentMonthEpisodes;
+export const getCurrentWeekEpisodes = (state: TvSeriesState) => state.currentWeekEpisodes;
+export const getClosestEpisode = (state: TvSeriesState) => state.closestEpisode;
 
-export const getTvSeries = createSelector(
-  getTvSeriesState,
-  state => state.tvShows
-);
-
-export const getCurrentTvSeries = createSelector(
-  getTvSeriesState,
-  state => state.currentTvShow
-);
-
-export const getCurrentMonthEpisodes = createSelector(
-  getTvSeriesState,
-  state => state.currentMonthEpisodes
-);
-
-export const getCurrentWeekEpisodes = createSelector(
-  getTvSeriesState,
-  state => state.currentWeekEpisodes
-);
-
-export const getClosestEpisode = createSelector(
-  getTvSeriesState,
-  state => state.closestEpisode
-);
-
-export function reducer(state = initialState, action: TvShowAction.All): TvSeriesState {
-  switch (action.type) {
+export function reducer(state = initialState, tvSeriesAction: TvShowAction.All): TvSeriesState {
+  switch (tvSeriesAction.type) {
     case TvShowAction.TvSeriesActionTypes.GET_ALL_SUCCESS: {
       return {
         ...state,
-        tvShows: action.payload
+        tvShows: tvSeriesAction.payload
       };
     }
     case TvShowAction.TvSeriesActionTypes.GET_ONE_SUCCESS: {
       return {
         ...state,
-        currentTvShow: action.payload
+        currentTvShow: tvSeriesAction.payload
       };
     }
     case TvShowAction.TvSeriesActionTypes.GET_CURRENT_MONTH_EPISODES_SUCCESS: {
       return {
         ...state,
-        currentMonthEpisodes: action.payload
+        currentMonthEpisodes: tvSeriesAction.payload
       };
     }
     case TvShowAction.TvSeriesActionTypes.GET_CURRENT_WEEK_EPISODES_SUCCESS: {
       return {
         ...state,
-        currentWeekEpisodes: action.payload
+        currentWeekEpisodes: tvSeriesAction.payload
       };
     }
     case TvShowAction.TvSeriesActionTypes.ADD_TV_SERIES_TO_FAVOURITE_SUCCESS: {
@@ -98,7 +73,7 @@ export function reducer(state = initialState, action: TvShowAction.All): TvSerie
     }
     case TvShowAction.TvSeriesActionTypes.ADD_TV_SERIES_RATING_SUCCESS: {
       const tmpTvShow = {...state.currentTvShow};
-      tmpTvShow.userRatingDto = action.tvSeriesRating;
+      tmpTvShow.userRatingDto = tvSeriesAction.tvSeriesRating;
       return {
         ...state,
         currentTvShow: tmpTvShow
@@ -106,7 +81,7 @@ export function reducer(state = initialState, action: TvShowAction.All): TvSerie
     }
     case TvShowAction.TvSeriesActionTypes.UPDATE_TV_SERIES_RATING_SUCCESS: {
       const tmpTvShow = {...state.currentTvShow};
-      tmpTvShow.userRatingDto = action.ratingModel;
+      tmpTvShow.userRatingDto = tvSeriesAction.ratingModel;
       return {
         ...state,
         currentTvShow: tmpTvShow
@@ -115,7 +90,7 @@ export function reducer(state = initialState, action: TvShowAction.All): TvSerie
     case TvShowAction.TvSeriesActionTypes.GET_TV_SERIES_CLOSEST_EPISODE_SUCCESS: {
       return {
         ...state,
-        closestEpisode: action.closestEpisode
+        closestEpisode: tvSeriesAction.closestEpisode
       };
     }
     default: {
@@ -123,3 +98,4 @@ export function reducer(state = initialState, action: TvShowAction.All): TvSerie
     }
   }
 }
+

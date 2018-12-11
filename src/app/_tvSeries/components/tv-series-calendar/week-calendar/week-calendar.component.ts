@@ -11,6 +11,7 @@ import * as _ from 'lodash';
 import { ICalendarEpisode } from '../../../models/calendarEpisode';
 import { Store, select } from '@ngrx/store';
 import * as fromTvSeries from '../../../reducers/tvSeries.reducer';
+import * as fromTvSeriesModule from '../../../reducers';
 import { isSpinnerShowing } from '../../../../_shared/reducers/index';
 import * as tvShowsActions from '../../../actions/tvSeries.actions';
 import { Observable } from 'rxjs';
@@ -42,7 +43,7 @@ export class WeekCalendarComponent implements OnInit {
   public container6: ElementRef<any>;
 
   constructor(
-    private store: Store<fromTvSeries.State>,
+    private store: Store<fromTvSeriesModule.State>,
     private el: ElementRef,
     private renderer: Renderer2
   ) {
@@ -272,7 +273,7 @@ export class WeekCalendarComponent implements OnInit {
       new tvShowsActions.GetCurrentWeekEpisodesAction(payload)
     );
     this.store
-      .pipe(select(fromTvSeries.getCurrentMonthEpisodes))
+      .pipe(select(fromTvSeriesModule.getCurrentMonthEpisodes))
       .subscribe(episodes => {
         this.currentWeekEpisodes$ = episodes;
       });

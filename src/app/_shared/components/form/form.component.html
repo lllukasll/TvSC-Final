@@ -1,0 +1,49 @@
+<form class="form-container" (submit)="handleSubmit($event)" [ngClass]="{doingRequest: isDoingRequest}">
+  <div *ngIf='isDoingRequest' class="spinner">
+    <app-spinner ></app-spinner>
+  </div>
+  <div class="input-container" *ngFor='let item of formSettings; let i = index' >
+    <label>{{item.label}}</label>
+    <ng-container *ngIf="item.type === 'textarea'">
+      <textarea
+        [ngClass]="{'invalid-input': formStateItems[i].isAllErrorsResolved === false, 'correct-input': formStateItems[i].isAllErrorsResolved === true}"
+        [value]="formStateItems[i].value"
+        (focus)="fillErrorsOnFocusedInput(i)"
+        (input)="handleTyping(i, $event)"
+        (blur)="removeErrorList()"
+        placeholder={{item.placeholder}}></textarea>
+      <div *ngIf="formStateItems[i].isAllErrorsResolved === false && i === currentFocusedInput" class="errors-list">
+        <div class="arrow"></div>
+        <ul>
+          <li *ngFor='let error of formStateItems[i].contents'>
+            <span *ngIf="error.isError === false" class='error-completed'>{{error.content}}</span>
+            <span *ngIf="error.isError === true" class='error-isError'>{{error.content}}</span>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="item.type !== 'textarea'">
+      <input
+        [ngClass]="{'invalid-input': formStateItems[i].isAllErrorsResolved === false, 'correct-input': formStateItems[i].isAllErrorsResolved === true}"
+        type={{item.type}}
+        [value]="formStateItems[i].value"
+        (focus)="fillErrorsOnFocusedInput(i)"
+        (input)="handleTyping(i, $event)"
+        (blur)="removeErrorList()"
+        placeholder={{item.placeholder}} />
+      <div *ngIf="formStateItems[i].isAllErrorsResolved === false && i === currentFocusedInput" class="errors-list">
+        <div class="arrow"></div>
+        <ul>
+          <li *ngFor='let error of formStateItems[i].contents'>
+            <span *ngIf="error.isError === false" class='error-completed'>{{error.content}}</span>
+            <span *ngIf="error.isError === true" class='error-isError'>{{error.content}}</span>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+  </div>
+  <div class="input-container">
+    <button [disabled]="!isFormReadyToSubmit || isDoingRequest" type="submit">{{submitBtnName}}</button>
+  </div>
+</form>
+

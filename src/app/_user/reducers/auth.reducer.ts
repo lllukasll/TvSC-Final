@@ -7,6 +7,7 @@ export interface State {
     errorMessage: string | null;
     logoutErrorMessage: string | null;
     loggedUser: any;
+    changePasswordError: string;
 }
 
 export const initialState: State = {
@@ -14,9 +15,14 @@ export const initialState: State = {
     user: null,
     errorMessage: null,
     loggedUser: null,
-    logoutErrorMessage: null
+    logoutErrorMessage: null,
+    changePasswordError: null
 };
 
+export const getAuthError = (state: State) => state.errorMessage;
+export const getLoggedUser = (state: State) => state.loggedUser;
+export const getAuthState = (state: State) => state.isAuthenticated;
+export const getChangePasswordError = (state: State) => state.changePasswordError;
 
 export function reducer(state = initialState, action: All): State {
     switch (action.type) {
@@ -70,6 +76,18 @@ export function reducer(state = initialState, action: All): State {
           return {
             ...state,
             logoutErrorMessage: action.payload
+          };
+        }
+        case AuthActionTypes.CHANGE_PASSWORD_FAILURE: {
+          return {
+            ...state,
+            changePasswordError: action.payload
+          };
+        }
+        case AuthActionTypes.CHANGE_PASSWORD_SUCCESS: {
+          return {
+            ...state,
+            changePasswordError: null
           };
         }
         default: {

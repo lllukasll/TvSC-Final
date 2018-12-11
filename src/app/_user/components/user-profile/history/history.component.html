@@ -1,0 +1,37 @@
+<div class='wrapper'>
+  <div class='history'>
+    <div class='title'>Twoja ostatnia aktywność :</div>
+
+    <div class='activity' *ngFor='let notification of notifications'>
+      <div class='type red' *ngIf='notification.type === "favouriteTvSeries"'><i class="fa fa-heart"></i></div>
+      <div class='type yellow' *ngIf='notification.type === "ratedTvSeries"'><i class="fa fa-star"></i></div>
+      <div class='type blue' *ngIf='notification.type === "commentedTvSeries"'><i class="fa fa-comment"></i></div>
+      <div class='type green' *ngIf='notification.type === "watchedEpisode"'><i class="fa fa-eye"></i></div>
+      <div class='text'>
+        <div class='content'>{{notification.firstPart}}<span class='tv-series' routerLink='/tvSeries/{{notification.tvShowId}}'>{{notification.tvShowName}}</span>{{notification.secondPart}}</div>
+        <div class='date'>{{getTime(notification)}}</div>
+      </div>
+    </div>
+
+  </div>
+  <div class='lastly-watched'>
+    <div class='title'>Ostatnio oglądane :</div>
+    <div class='tv-series-holder'>
+      <app-tv-series-card
+        *ngFor='let tvSeries of lastWatchedEpisodes'
+        [height]='250'
+        [width]='250 * 0.8'
+        [id]='tvSeries.id && tvSeries.id'
+        [name]='tvSeries.tvShowName && tvSeries.tvShowName'
+        [station]='tvSeries.network && tvSeries.network'
+        [description]=''
+        [cast]='[]'
+        [tags]='[]'
+        [episodeName]='tvSeries.episodeName && tvSeries.episodeName'
+        [img]='tvSeries.photoName && tvSeries.photoName'
+        [showDescription]='false'>
+      </app-tv-series-card>
+    </div>
+  </div>
+
+</div>

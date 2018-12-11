@@ -91,10 +91,10 @@ export class TvSeriesTimerComponent implements OnInit, OnChanges, OnDestroy {
 
        this.info = this.generateInfo(this.days, this.hours, this.minutes, this.seconds);
 
-        console.log('Days : ' + this.days);
-        console.log('Hours : ' + this.hours);
-        console.log('Minutes : ' + this.minutes);
-        console.log('Seconds : ' + this.seconds);
+        // console.log('Days : ' + this.days);
+        // console.log('Hours : ' + this.hours);
+        // console.log('Minutes : ' + this.minutes);
+        // console.log('Seconds : ' + this.seconds);
       }, 1000);
     }
   }

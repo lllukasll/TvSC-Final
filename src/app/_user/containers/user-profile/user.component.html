@@ -1,0 +1,24 @@
+<div class='user-container'>
+  <app-sidebar
+    (optionClicked)='onChange($event)'
+    [loggedUser]='loggedUser'
+  ></app-sidebar>
+  <div class='wrapper'>
+    <app-info-page *ngIf='informationsActive'
+      [notifications]='notifications'
+      [loggedUser]='loggedUser'
+      [stats]='stats'
+      [propositions]='propositions'
+    ></app-info-page>
+    <app-my-favourite *ngIf='myFavourite'
+      [userFavouriteTvSeries]='userFavouriteTvSeries'
+      [lastWatchedEpisodes]='lastWatchedEpisodes'
+      [propositions]='propositions'
+    ></app-my-favourite>
+    <app-history *ngIf='historyActive'
+      [notifications]='notifications'
+      [lastWatchedEpisodes]='lastWatchedEpisodes'
+    ></app-history>
+    <app-settings *ngIf='settingsActive'></app-settings>
+  </div>
+</div>
