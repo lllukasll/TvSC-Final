@@ -1,0 +1,14 @@
+.admin-container {
+  margin-top: 50px;
+  height: 100%;
+
+  .wrapper {
+    padding-left: 250px;
+    height: 100%;
+    transition: 0.5s;
+
+    @media screen and (max-width: 768px) {
+      padding-left: 50px;
+    }
+  }
+}

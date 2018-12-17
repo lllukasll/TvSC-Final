@@ -1,3 +1,80 @@
-<p>
-  welcome works!
-</p>
+<div class='welcome-container'>
+
+  <div class='top-bar'>
+    <div class='gradient'></div>
+    <div class='welcome'>
+      <div class='title'>Twoje centrum seriali !</div>
+      <div class='information'>Śledź, oceniaj, komentuj i zapisuj postęp oglądanych seriali</div>
+      <div class='log-in-btn'>Zaloguj się aby korzystać ze wszystkich możliwości serwisu</div>
+      <div class='register'>Zarejestruj się jeśli nie masz jeszcze konta</div>
+    </div>
+    <div class='arrow-down'>
+      <i class="fa fa-chevron-down" (click)="scroll(target)"></i>
+    </div>
+  </div>
+
+  <div #target class='posibilities-container'>
+    <div class='follow'>
+      <i class="fa fa-calendar"></i>
+      <div class='title'>Śledź seriale</div>
+      <div class='content'>Przeglądaj kalendarz, sprawdzaj czas do następnego odcinka, poznaj datę nowego sezonu i wiele innych ...</div>
+    </div>
+    <div class='follow'>
+        <i class="fa fa-star"></i>
+      <div class='title'>Oceniaj seriale</div>
+      <div class='content'>Oceniaj seriale, sprawdzaj oceny innych użytkowników, znajduj seriale z najwyższą oceną ...</div>
+    </div>
+    <div class='follow'>
+        <i class="fa fa-comments"></i>
+      <div class='title'>Komentuj seriale</div>
+      <div class='content'>Dziel się swoją opinią na temat serialu z innymi użytkownikami , poznawaj inne opinie ...</div>
+    </div>
+    <div class='follow'>
+      <i class="fa fa-eye"></i>
+      <div class='title'>Zapisuj postęp seriali</div>
+      <div class='content'>Dodawaj sezony i odcinki do obejrzanych, śledź postęp oglądanych seriali i już nigdy nie zapomnij gdzie skończyłeś oglądanie ...</div>
+    </div>
+    <div class='follow'>
+      <i class="fa fa-gratipay"></i>
+      <div class='title'>Dodawaj do ulubionych</div>
+      <div class='content'>Dodawaj seriale do ulubionych, twórz swoje listy w celu uzyskania łatwiejszego dostępu do twoich ulubionych seriali ...</div>
+    </div>
+  </div>
+
+  <div class='functions'>
+    <div class='function-l'>
+      <div class='left'>
+        <div class='img'><img src='../../../assets/img/info-page.png' title='Profil użytkownika'/></div>
+      </div>
+      <div class='right'>
+        <div class='title'>Rozbudowany profil użytkownika</div>
+        <div class='content'>Przeglądaj statystyki oglądanych serial, śledź swoją aktywność na stronie, przeglądaj polecane seriale, aktualizuj avatar i wiele innych ...</div>
+      </div>
+    </div>
+    <div class='function-r'>
+      <div class='left'>
+        <div class='title'>Dokładne szczegóły serialu</div>
+        <div class='content'>Rozbudowane szczegóły serialu. Poznaj ocenę użytkowników, czytaj i pisz komentarze, przeglądaj odcinki, dodawaj do ulubionych, dodawaj seriale do ulubionyh</div>
+      </div>
+      <div class='right'>
+        <div class='img'><img src='../../../assets/img/details.png' title='Szczególy serialu'/></div>
+      </div>
+    </div>
+    <div class='function-l'>
+      <div class='left'>
+        <div class='img'><img src='../../../assets/img/list.png' title='Lista seriali'/></div>
+      </div>
+      <div class='right'>
+        <div class='title'>Lista seriali</div>
+        <div class='content'>Rozbudowana lista seriali z możliwością fltrowania i sortowania wyników, według preferowanych wymagań ...</div>
+      </div>
+    </div>
+    <div class='more'>
+      I wiele innych ...
+    </div>
+  </div>
+
+  <app-fotter></app-fotter>
+
+</div>
+

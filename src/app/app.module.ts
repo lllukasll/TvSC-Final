@@ -20,6 +20,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ClickOutsideDirective } from './directives/clickOutsideDirective';
+import { FotterComponent } from './components/fotter/fotter.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ClickOutsideDirective } from './directives/clickOutsideDirective';
     WelcomeComponent,
     NavbarComponent,
     ClickOutsideDirective,
+    FotterComponent,
   ],
   imports: [
     HttpClientModule,

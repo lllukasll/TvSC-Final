@@ -10,6 +10,7 @@ import { GetUserByCookie } from './_user/actions/auth.actions';
 })
 export class AppComponent implements OnInit {
   title = 'TvSC-Final';
+  adminPanelActive = false;
 
   constructor(private store: Store<fromAuth.State>) {
 

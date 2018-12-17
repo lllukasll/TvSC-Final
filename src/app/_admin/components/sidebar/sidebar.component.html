@@ -1,0 +1,19 @@
+<div class='sidebar-container'>
+  <div class='center margin-top-10 title'>Panel Admina</div>
+  <div class='profile-photo-wrapper'>
+    <img class='profile-photo' [src]='loggedUser && loggedUser.avatar ? "http://localhost:50388/usersPictures/" + loggedUser.avatar : "../../../../../assets/img/placeholder.png"' />
+  </div>
+  <div class='center margin-top-10'>Witaj</div>
+  <div class='center login margin-bottom-10'>{{loggedUser && loggedUser.firstName}} {{loggedUser && loggedUser.lastName}} [ {{loggedUser && loggedUser.userName}} ]</div>
+
+  <hr />
+  <div class='link' (click)='onClick("tvSeries")'>
+    <span class='icon-wrapper'>
+        <i class="fa fa-tv icon"></i>
+    </span>
+    <span class='cat-name'>Seriale</span>
+  </div>
+  <div class='link' (click)='onClick("actors")'><i class="fa fa-users icon"></i><span class='cat-name'>Aktorzy</span></div>
+  <div class='link' (click)='onClick("categories")'><i class="fa fa-list icon"></i><span class='cat-name'>Kategorie</span></div>
+  <div class='link' (click)='onClick("users")'><i class="fa fa-user icon"></i><span class='cat-name'>Użytkownicy</span></div>
+</div>

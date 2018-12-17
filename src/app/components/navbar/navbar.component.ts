@@ -19,7 +19,6 @@ import { take } from 'rxjs/operators';
 })
 export class NavbarComponent implements OnInit {
   loginModel: Credentials = new Credentials();
-
   loginFormOpened: boolean;
   loginFormOpened$: Observable<boolean>;
   loginErrors$: any;

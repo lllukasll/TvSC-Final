@@ -1,7 +1,7 @@
 <div class='comments-container'>
   <div class='line'><div class='circle'></div></div>
   <div class='comment-container' *ngFor='let comment of comments$'>
-    <div class='avatar'><img src='../../../../../assets/img/gameOfThrones/cast1.jpg' title='avatar'></div>
+    <div class='avatar'><img [src]='comment && comment.avatar ? "http://localhost:50388/usersPictures/" + comment.avatar :  "../../../../../assets/img/placeholder.png"' title='avatar'></div>
     <div class='comment-content'>
       <div class='comment-title'>
         <span class='autor'>{{comment.user}}</span>
@@ -9,8 +9,8 @@
         <span class='right'>
           <i class="fa fa-minus-square" *ngIf='isAuthor(comment)' (click)='onDeleteClicked(comment)' title='Usuń komentarz'></i>
           <i class="fa fa-edit" *ngIf='isAuthor(comment)' (click)='onEditClicked(comment)' title='Edytuj komentarz'></i>
-          <i class="fa fa-heart" *ngIf='!isAuthor(comment)' title='Polub ten komentarz'></i>
-          <i class="fa fa-comment" *ngIf='!isAuthor(comment)' title='Odpowiedz'></i>
+          <!-- <i class="fa fa-heart" *ngIf='!isAuthor(comment)' title='Polub ten komentarz'></i>
+          <i class="fa fa-comment" *ngIf='!isAuthor(comment)' title='Odpowiedz'></i> -->
         </span>
       </div>
       <div class='comment-text'>

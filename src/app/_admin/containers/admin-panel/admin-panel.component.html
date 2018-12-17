@@ -1,3 +1,16 @@
-<ul>
-  <li *ngFor='let tvShow of tvShows$'>{{tvShow.name}}</li>
-</ul>
+<div class='admin-container'>
+    <app-sidebar
+      [loggedUser]='loggedUser'
+      (optionClicked)='onChange($event)'
+    ></app-sidebar>
+    <div class='wrapper'>
+      <app-tv-series *ngIf='activePart === "tvSeries"'
+      ></app-tv-series>
+      <app-actors *ngIf='activePart === "actors"'
+      ></app-actors>
+      <app-categories *ngIf='activePart === "categories"'
+      ></app-categories>
+      <app-users *ngIf='activePart === "users"'
+      ></app-users>
+    </div>
+  </div>

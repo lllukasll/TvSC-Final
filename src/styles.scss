@@ -1,16 +1,23 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~bootstrap/dist/css/bootstrap-grid.min.css";
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
 
 .container-fluid, .row {
   margin: 0;
   padding: 0;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 94%;
   overflow-x: hidden;
   background-color: #0c0c0c ;
   color: #fff;
   margin: 0;
+  font-family: 'PT Sans', sans-serif;
 
   &::-webkit-scrollbar {
     width: 10px;

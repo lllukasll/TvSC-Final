@@ -1,0 +1,23 @@
+.fotter-container {
+  width: 90%;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-left: 5%;
+  margin-right: 5%;
+
+  .contact {
+    display: inline-block;
+    width: 50%;
+  }
+
+  .about {
+    display: inline-block;
+    width: 50%;
+  }
+
+  hr {
+    opacity: 0.6;
+  }
+}

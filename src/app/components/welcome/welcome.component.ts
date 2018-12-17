@@ -9,6 +9,10 @@ export class WelcomeComponent implements OnInit {
 
   constructor() { }
 
+  scroll(el) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
+
   ngOnInit() {
   }
 

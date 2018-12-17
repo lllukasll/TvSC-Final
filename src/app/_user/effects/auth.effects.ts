@@ -185,7 +185,8 @@ export class AuthEffects  {
 
   @Effect({ dispatch: false })
   LogoutSuccess: Observable<any> = this.actions.pipe(
-    ofType(AuthActionTypes.LOGOUT_SUCCESS)
+    ofType(AuthActionTypes.LOGOUT_SUCCESS),
+    tap(() => this.router.navigateByUrl('/'))
   );
 
   @Effect({ dispatch: false })

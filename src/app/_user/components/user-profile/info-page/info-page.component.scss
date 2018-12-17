@@ -7,6 +7,19 @@
   grid-template-rows: 1fr 1fr 1fr;
   font-family: 'PT Sans', sans-serif;
 
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../../../assets/img/bg3.jpg');
+    background-origin: content-box;
+    background-clip: content-box;
+    background-size: cover;
+    opacity: 0.1;
+  }
+
   .profile-photo {
     margin: 0 10px;
     grid-column-start: 1;

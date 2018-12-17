@@ -5,7 +5,13 @@
     ></app-tv-series-list-sidebar>
     <div class="content">
 
-      <app-tv-series-list-sort-bar></app-tv-series-list-sort-bar>
+      <app-tv-series-list-sort-bar>
+        <app-tv-series-list-pagination
+          [totalPageNumber]='tvShows$.totalPageNumber'
+          [activePageNumber]='tvShows$.activePageNumber'
+          (pageChange)='pageChanged($event)'
+        ></app-tv-series-list-pagination>
+      </app-tv-series-list-sort-bar>
 
       <div class="tv-shows">
         <div *ngIf='loading | async' class="spinner">
@@ -21,15 +27,13 @@
               [description]='tvShow.description'
               [cast]='tvShow.actors'
               [tags]='tvShow.categories'
-              [img]='tvShow.photoName'>
+              [img]='tvShow.photoName'
+              [width]='300'
+              [height]='400'>
           </app-tv-series-card>
         </div>
 
-        <app-tv-series-list-pagination
-          [totalPageNumber]='tvShows$.totalPageNumber'
-          [activePageNumber]='tvShows$.activePageNumber'
-          (pageChange)='pageChanged($event)'
-        ></app-tv-series-list-pagination>
+
 
       </div>
     </div>
